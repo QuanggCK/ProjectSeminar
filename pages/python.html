@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Học ngôn ngữ Python - Cú pháp, OOP, List, Dictionary, File I/O với ví dụ và bài tập">
+  <title>Ngôn Ngữ Python - Programming Learning Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Mở menu">☰</button>
+    <a href="../index.html" class="navbar-brand">
+      <div class="logo-icon">⟨/⟩</div>
+      <span>Programming Learning Hub</span>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="c.html">C</a></li>
+      <li><a href="cpp.html">C++</a></li>
+      <li><a href="java.html">Java</a></li>
+      <li><a href="python.html" class="active">Python</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode">🌙</button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Python</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro"><span class="nav-icon python-icon">📖</span> Giới thiệu</a></li>
+        <li><a href="#syntax"><span class="nav-icon python-icon">📝</span> Cú pháp cơ bản</a></li>
+        <li><a href="#data-structures"><span class="nav-icon python-icon">📊</span> Cấu trúc dữ liệu</a></li>
+        <li><a href="#functions"><span class="nav-icon python-icon">⚡</span> Hàm</a></li>
+        <li><a href="#oop"><span class="nav-icon python-icon">🏗️</span> OOP</a></li>
+        <li><a href="#fileio"><span class="nav-icon python-icon">📁</span> File I/O</a></li>
+        <li><a href="#exercises"><span class="nav-icon python-icon">✏️</span> Bài tập</a></li>
+        <li><a href="#python-quiz"><span class="nav-icon python-icon">❓</span> Quiz</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Khác</div>
+      <ul class="sidebar-nav">
+        <li><a href="c.html"><span class="nav-icon c-icon">C</span> C</a></li>
+        <li><a href="cpp.html"><span class="nav-icon cpp-icon">C++</span> C++</a></li>
+        <li><a href="java.html"><span class="nav-icon java-icon">☕</span> Java</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">🏠 Trang Chủ</a> <span>/</span> <span>Ngôn ngữ Python</span>
+      </div>
+      <h1>
+        <span class="lang-badge python-badge">🐍</span>
+        Ngôn Ngữ Lập Trình Python
+      </h1>
+      <p>Ngôn ngữ dễ học nhất, cú pháp đơn giản và rõ ràng - được phát triển bởi Guido van Rossum (1991).</p>
+    </div>
+
+    <!-- Giới thiệu -->
+    <section class="content-section" id="intro">
+      <h2>Giới Thiệu Python</h2>
+      <p>Python là ngôn ngữ lập trình cấp cao, đa mục đích, nổi tiếng với cú pháp rõ ràng và dễ đọc. Python được sử dụng rộng rãi trong AI, Data Science, Web Development, Automation và nhiều lĩnh vực khác.</p>
+
+      <div class="info-box note">
+        <strong>📌 Tại sao học Python?</strong>
+        <ul>
+          <li>Cú pháp đơn giản, dễ đọc như tiếng Anh</li>
+          <li>Không cần khai báo kiểu dữ liệu</li>
+          <li>Thư viện khổng lồ: NumPy, Pandas, TensorFlow, Django...</li>
+          <li>Ứng dụng rộng rãi: AI, Data Science, Web, Automation</li>
+          <li>Cộng đồng lớn và tài liệu phong phú</li>
+        </ul>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Python - Hello World</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="comment"># Chương trình đầu tiên - đơn giản nhất!</span>
+<span class="builtin">print</span>(<span class="string">"Hello, Python!"</span>)
+
+<span class="comment"># So sánh với C: không cần #include, main(), return</span>
+<span class="comment"># Python tự hiểu - viết rất ngắn gọn</span></pre>
+      </div>
+      <div class="output-block">Hello, Python!</div>
+    </section>
+
+    <!-- Cú pháp cơ bản -->
+    <section class="content-section" id="syntax">
+      <h2>Cú Pháp Cơ Bản</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Biến & Kiểu dữ liệu (Dynamic Typing)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p>Python sử dụng <strong>dynamic typing</strong> — bạn không cần khai báo kiểu, Python tự nhận diện.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment"># Python tự nhận kiểu dữ liệu</span>
+ten = <span class="string">"Nguyen Van A"</span>      <span class="comment"># str (chuỗi)</span>
+tuoi = <span class="number">20</span>                  <span class="comment"># int (số nguyên)</span>
+diem_tb = <span class="number">8.5</span>              <span class="comment"># float (số thực)</span>
+la_sv = <span class="keyword">True</span>               <span class="comment"># bool (đúng/sai)</span>
+danh_sach = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]      <span class="comment"># list (danh sách)</span>
+thong_tin = {<span class="string">"a"</span>: <span class="number">1</span>}       <span class="comment"># dict (từ điển)</span>
+
+<span class="comment"># Kiểm tra kiểu</span>
+<span class="builtin">print</span>(<span class="string">f"ten: </span>{ten}<span class="string"> - </span>{<span class="builtin">type</span>(ten)}<span class="string">"</span>)
+<span class="builtin">print</span>(<span class="string">f"tuoi: </span>{tuoi}<span class="string"> - </span>{<span class="builtin">type</span>(tuoi)}<span class="string">"</span>)
+<span class="builtin">print</span>(<span class="string">f"diem_tb: </span>{diem_tb}<span class="string"> - </span>{<span class="builtin">type</span>(diem_tb)}<span class="string">"</span>)
+<span class="builtin">print</span>(<span class="string">f"la_sv: </span>{la_sv}<span class="string"> - </span>{<span class="builtin">type</span>(la_sv)}<span class="string">"</span>)
+
+<span class="comment"># String formatting (f-string)</span>
+<span class="builtin">print</span>(<span class="string">f"\nXin chao </span>{ten}<span class="string">, ban </span>{tuoi}<span class="string"> tuoi, diem </span>{diem_tb}<span class="string">"</span>)</pre>
+            </div>
+            <div class="output-block">ten: Nguyen Van A - &lt;class 'str'&gt;
+tuoi: 20 - &lt;class 'int'&gt;
+diem_tb: 8.5 - &lt;class 'float'&gt;
+la_sv: True - &lt;class 'bool'&gt;
+
+Xin chao Nguyen Van A, ban 20 tuoi, diem 8.5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Câu điều kiện & Vòng lặp</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="info-box tip">
+              <strong>💡 Lưu ý:</strong> Python dùng <strong>thụt lề (indentation)</strong> thay cho dấu ngoặc nhọn {} để xác định khối lệnh!
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment"># === if / elif / else ===</span>
+diem = <span class="number">85</span>
+
+<span class="keyword">if</span> diem >= <span class="number">90</span>:
+    <span class="builtin">print</span>(<span class="string">"Xuat sac!"</span>)
+<span class="keyword">elif</span> diem >= <span class="number">80</span>:
+    <span class="builtin">print</span>(<span class="string">"Gioi!"</span>)
+<span class="keyword">elif</span> diem >= <span class="number">65</span>:
+    <span class="builtin">print</span>(<span class="string">"Kha!"</span>)
+<span class="keyword">else</span>:
+    <span class="builtin">print</span>(<span class="string">"Can co gang!"</span>)
+
+<span class="comment"># === for loop ===</span>
+<span class="builtin">print</span>(<span class="string">"\nBang cuu chuong 5:"</span>)
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="builtin">print</span>(<span class="string">f"5 x </span>{i}<span class="string"> = </span>{<span class="number">5</span> * i}<span class="string">"</span>)
+
+<span class="comment"># === while loop ===</span>
+<span class="builtin">print</span>(<span class="string">"\nDem nguoc:"</span>)
+n = <span class="number">5</span>
+<span class="keyword">while</span> n > <span class="number">0</span>:
+    <span class="builtin">print</span>(n, end=<span class="string">" "</span>)
+    n -= <span class="number">1</span>
+<span class="builtin">print</span>(<span class="string">"Phong!"</span>)</pre>
+            </div>
+            <div class="output-block">Gioi!
+
+Bang cuu chuong 5:
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+
+Dem nguoc:
+5 4 3 2 1 Phong!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cấu trúc dữ liệu -->
+    <section class="content-section" id="data-structures">
+      <h2>Cấu Trúc Dữ Liệu</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>List & List Comprehension</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment"># === List cơ bản ===</span>
+fruits = [<span class="string">"Tao"</span>, <span class="string">"Cam"</span>, <span class="string">"Chuoi"</span>, <span class="string">"Xoai"</span>]
+
+<span class="builtin">print</span>(<span class="string">"Danh sach:"</span>, fruits)
+<span class="builtin">print</span>(<span class="string">"Phan tu dau:"</span>, fruits[<span class="number">0</span>])
+<span class="builtin">print</span>(<span class="string">"Phan tu cuoi:"</span>, fruits[-<span class="number">1</span>])
+<span class="builtin">print</span>(<span class="string">"Slicing:"</span>, fruits[<span class="number">1</span>:<span class="number">3</span>])
+
+<span class="comment"># Thêm / Xóa</span>
+fruits.<span class="function">append</span>(<span class="string">"Dua"</span>)
+fruits.<span class="function">remove</span>(<span class="string">"Cam"</span>)
+<span class="builtin">print</span>(<span class="string">"Sau thay doi:"</span>, fruits)
+
+<span class="comment"># === List Comprehension - Tính năng đặc biệt ===</span>
+numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+squares = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers]
+evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> numbers <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>]
+
+<span class="builtin">print</span>(<span class="string">"\nBinh phuong:"</span>, squares)
+<span class="builtin">print</span>(<span class="string">"So chan:"</span>, evens)
+<span class="builtin">print</span>(<span class="string">"Tong binh phuong:"</span>, <span class="builtin">sum</span>(squares))</pre>
+            </div>
+            <div class="output-block">Danh sach: ['Tao', 'Cam', 'Chuoi', 'Xoai']
+Phan tu dau: Tao
+Phan tu cuoi: Xoai
+Slicing: ['Cam', 'Chuoi']
+Sau thay doi: ['Tao', 'Chuoi', 'Xoai', 'Dua']
+
+Binh phuong: [1, 4, 9, 16, 25]
+So chan: [2, 4]
+Tong binh phuong: 55</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Dictionary & Tuple & Set</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment"># === Dictionary (Từ điển) ===</span>
+sinh_vien = {
+    <span class="string">"ten"</span>: <span class="string">"Nguyen Van A"</span>,
+    <span class="string">"tuoi"</span>: <span class="number">20</span>,
+    <span class="string">"diem"</span>: <span class="number">8.5</span>,
+    <span class="string">"mon_hoc"</span>: [<span class="string">"Python"</span>, <span class="string">"Java"</span>, <span class="string">"C++"</span>]
+}
+
+<span class="builtin">print</span>(<span class="string">"Ten:"</span>, sinh_vien[<span class="string">"ten"</span>])
+<span class="builtin">print</span>(<span class="string">"Mon hoc:"</span>, sinh_vien[<span class="string">"mon_hoc"</span>])
+
+<span class="comment"># Duyệt dictionary</span>
+<span class="keyword">for</span> key, value <span class="keyword">in</span> sinh_vien.<span class="function">items</span>():
+    <span class="builtin">print</span>(<span class="string">f"  </span>{key}<span class="string">: </span>{value}<span class="string">"</span>)
+
+<span class="comment"># === Tuple (bất biến) ===</span>
+toa_do = (<span class="number">10</span>, <span class="number">20</span>)
+<span class="builtin">print</span>(<span class="string">f"\nToa do: x=</span>{toa_do[<span class="number">0</span>]}<span class="string">, y=</span>{toa_do[<span class="number">1</span>]}<span class="string">"</span>)
+
+<span class="comment"># === Set (tập hợp - không trùng lặp) ===</span>
+numbers = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>}
+<span class="builtin">print</span>(<span class="string">"Set:"</span>, numbers)  <span class="comment"># Tự loại bỏ trùng</span></pre>
+            </div>
+            <div class="output-block">Ten: Nguyen Van A
+Mon hoc: ['Python', 'Java', 'C++']
+  ten: Nguyen Van A
+  tuoi: 20
+  diem: 8.5
+  mon_hoc: ['Python', 'Java', 'C++']
+
+Toa do: x=10, y=20
+Set: {1, 2, 3}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hàm -->
+    <section class="content-section" id="functions">
+      <h2>Hàm (Functions)</h2>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Python</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="comment"># === Hàm cơ bản ===</span>
+<span class="keyword">def</span> <span class="function">chao</span>(ten):
+    <span class="string">"""Ham chao - co docstring"""</span>
+    <span class="keyword">return</span> <span class="string">f"Xin chao, </span>{ten}<span class="string">!"</span>
+
+<span class="builtin">print</span>(<span class="function">chao</span>(<span class="string">"An"</span>))
+
+<span class="comment"># === Tham số mặc định ===</span>
+<span class="keyword">def</span> <span class="function">tinh_diem</span>(diem, he_so=<span class="number">1</span>):
+    <span class="keyword">return</span> diem * he_so
+
+<span class="builtin">print</span>(<span class="function">tinh_diem</span>(<span class="number">8</span>))        <span class="comment"># 8 (he_so mặc định = 1)</span>
+<span class="builtin">print</span>(<span class="function">tinh_diem</span>(<span class="number">8</span>, <span class="number">2</span>))     <span class="comment"># 16</span>
+
+<span class="comment"># === Lambda (hàm ẩn danh) ===</span>
+binh_phuong = <span class="keyword">lambda</span> x: x ** <span class="number">2</span>
+<span class="builtin">print</span>(<span class="string">"Lambda 5²:"</span>, <span class="function">binh_phuong</span>(<span class="number">5</span>))
+
+<span class="comment"># === *args và **kwargs ===</span>
+<span class="keyword">def</span> <span class="function">tong</span>(*args):
+    <span class="keyword">return</span> <span class="builtin">sum</span>(args)
+
+<span class="builtin">print</span>(<span class="string">"Tong:"</span>, <span class="function">tong</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))
+
+<span class="comment"># === Hàm đệ quy ===</span>
+<span class="keyword">def</span> <span class="function">giai_thua</span>(n):
+    <span class="keyword">if</span> n <= <span class="number">1</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> n * <span class="function">giai_thua</span>(n - <span class="number">1</span>)
+
+<span class="builtin">print</span>(<span class="string">"5! ="</span>, <span class="function">giai_thua</span>(<span class="number">5</span>))</pre>
+      </div>
+      <div class="output-block">Xin chao, An!
+8
+16
+Lambda 5²: 25
+Tong: 15
+5! = 120</div>
+    </section>
+
+    <!-- OOP -->
+    <section class="content-section" id="oop">
+      <h2>Lập Trình Hướng Đối Tượng (OOP)</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Class, __init__, Method</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">class</span> <span class="class-name">SinhVien</span>:
+    <span class="string">"""Class Sinh Vien"""</span>
+
+    <span class="comment"># Biến class (chung cho mọi đối tượng)</span>
+    truong = <span class="string">"NTU"</span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="builtin">self</span>, ten, tuoi, diem):
+        <span class="comment"># Biến instance (riêng cho từng đối tượng)</span>
+        <span class="builtin">self</span>.ten = ten
+        <span class="builtin">self</span>.tuoi = tuoi
+        <span class="builtin">self</span>.__diem = diem  <span class="comment"># Private (name mangling)</span>
+
+    <span class="keyword">def</span> <span class="function">gioi_thieu</span>(<span class="builtin">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"Toi la </span>{<span class="builtin">self</span>.ten}<span class="string">, </span>{<span class="builtin">self</span>.tuoi}<span class="string"> tuoi"</span>)
+        <span class="builtin">print</span>(<span class="string">f"Hoc tai: </span>{<span class="builtin">self</span>.truong}<span class="string">"</span>)
+
+    <span class="decorator">@property</span>
+    <span class="keyword">def</span> <span class="function">diem</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="builtin">self</span>.__diem
+
+    <span class="keyword">def</span> <span class="function">__str__</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="string">f"SinhVien(</span>{<span class="builtin">self</span>.ten}<span class="string">, </span>{<span class="builtin">self</span>.tuoi}<span class="string">, </span>{<span class="builtin">self</span>.__diem}<span class="string">)"</span>
+
+<span class="comment"># Sử dụng</span>
+sv = <span class="class-name">SinhVien</span>(<span class="string">"Nguyen Van A"</span>, <span class="number">20</span>, <span class="number">8.5</span>)
+sv.<span class="function">gioi_thieu</span>()
+<span class="builtin">print</span>(<span class="string">"Diem:"</span>, sv.diem)
+<span class="builtin">print</span>(sv)</pre>
+            </div>
+            <div class="output-block">Toi la Nguyen Van A, 20 tuoi
+Hoc tai: NTU
+Diem: 8.5
+SinhVien(Nguyen Van A, 20, 8.5)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Kế thừa & Đa hình</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod
+
+<span class="comment"># Lớp trừu tượng (Abstract Class)</span>
+<span class="keyword">class</span> <span class="class-name">Shape</span>(ABC):
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">area</span>(<span class="builtin">self</span>):
+        <span class="keyword">pass</span>
+
+    <span class="decorator">@abstractmethod</span>
+    <span class="keyword">def</span> <span class="function">perimeter</span>(<span class="builtin">self</span>):
+        <span class="keyword">pass</span>
+
+    <span class="keyword">def</span> <span class="function">describe</span>(<span class="builtin">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"Dien tich: </span>{<span class="builtin">self</span>.<span class="function">area</span>():.2f}<span class="string">"</span>)
+        <span class="builtin">print</span>(<span class="string">f"Chu vi: </span>{<span class="builtin">self</span>.<span class="function">perimeter</span>():.2f}<span class="string">"</span>)
+
+<span class="comment"># Lớp con</span>
+<span class="keyword">class</span> <span class="class-name">HinhTron</span>(<span class="class-name">Shape</span>):
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="builtin">self</span>, r):
+        <span class="builtin">self</span>.r = r
+
+    <span class="keyword">def</span> <span class="function">area</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="number">3.14159</span> * <span class="builtin">self</span>.r ** <span class="number">2</span>
+
+    <span class="keyword">def</span> <span class="function">perimeter</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="number">2</span> * <span class="number">3.14159</span> * <span class="builtin">self</span>.r
+
+<span class="keyword">class</span> <span class="class-name">HinhChuNhat</span>(<span class="class-name">Shape</span>):
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="builtin">self</span>, dai, rong):
+        <span class="builtin">self</span>.dai = dai
+        <span class="builtin">self</span>.rong = rong
+
+    <span class="keyword">def</span> <span class="function">area</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="builtin">self</span>.dai * <span class="builtin">self</span>.rong
+
+    <span class="keyword">def</span> <span class="function">perimeter</span>(<span class="builtin">self</span>):
+        <span class="keyword">return</span> <span class="number">2</span> * (<span class="builtin">self</span>.dai + <span class="builtin">self</span>.rong)
+
+<span class="comment"># Đa hình</span>
+shapes = [<span class="class-name">HinhTron</span>(<span class="number">5</span>), <span class="class-name">HinhChuNhat</span>(<span class="number">4</span>, <span class="number">6</span>)]
+<span class="keyword">for</span> s <span class="keyword">in</span> shapes:
+    <span class="builtin">print</span>(<span class="string">f"\n--- </span>{s.__class__.__name__}<span class="string"> ---"</span>)
+    s.<span class="function">describe</span>()</pre>
+            </div>
+            <div class="output-block">
+--- HinhTron ---
+Dien tich: 78.54
+Chu vi: 31.42
+
+--- HinhChuNhat ---
+Dien tich: 24.00
+Chu vi: 20.00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- File I/O -->
+    <section class="content-section" id="fileio">
+      <h2>Đọc / Ghi File</h2>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Python</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="comment"># === Ghi file ===</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"data.txt"</span>, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:
+    f.<span class="function">write</span>(<span class="string">"Dong 1: Hello Python\n"</span>)
+    f.<span class="function">write</span>(<span class="string">"Dong 2: File I/O\n"</span>)
+    f.<span class="function">write</span>(<span class="string">"Dong 3: Xin chao\n"</span>)
+
+<span class="builtin">print</span>(<span class="string">"Da ghi file thanh cong!"</span>)
+
+<span class="comment"># === Đọc file ===</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:
+    <span class="comment"># Đọc từng dòng</span>
+    <span class="keyword">for</span> line <span class="keyword">in</span> f:
+        <span class="builtin">print</span>(line.strip())
+
+<span class="comment"># === Đọc tất cả vào list ===</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:
+    lines = f.<span class="function">readlines</span>()
+    <span class="builtin">print</span>(<span class="string">f"\nTong so dong: </span>{<span class="builtin">len</span>(lines)}<span class="string">"</span>)</pre>
+      </div>
+      <div class="output-block">Da ghi file thanh cong!
+Dong 1: Hello Python
+Dong 2: File I/O
+Dong 3: Xin chao
+
+Tong so dong: 3</div>
+    </section>
+
+    <!-- Bài tập -->
+    <section class="content-section" id="exercises">
+      <h2>Bài Tập Luyện Tập</h2>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 1: Quản lý danh bạ</h4>
+        <p>Tạo chương trình quản lý danh bạ dùng Dictionary. Cho phép: thêm, xóa, tìm kiếm, hiển thị danh sách.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 2: Xử lý chuỗi</h4>
+        <p>Viết các hàm: đếm từ, đếm nguyên âm, đảo ngược chuỗi, kiểm tra palindrome.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 3: Class Quản lý thư viện</h4>
+        <p>Tạo class Book và Library. Library quản lý danh sách Book, hỗ trợ: thêm sách, mượn sách, trả sách, tìm kiếm.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 4: Phân tích dữ liệu</h4>
+        <p>Đọc file CSV chứa điểm sinh viên, tính điểm trung bình, tìm sinh viên có điểm cao nhất, phân loại.</p>
+      </div>
+
+      <h3 class="mt-3">💻 Thử viết code:</h3>
+      <div class="code-editor" id="python-editor">
+        <div class="editor-tabs">
+          <button class="editor-tab active">🐍 Python</button>
+        </div>
+        <div class="editor-area">
+          <textarea spellcheck="false">print("Hello, Python!")</textarea>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-success" onclick="runCode('python-editor')">▶ Chạy Code</button>
+          <button class="btn btn-secondary" onclick="clearEditor('python-editor')">🗑️ Xóa</button>
+          <button class="btn btn-secondary" onclick="loadExample('python-editor','python','hello')">📂 Hello World</button>
+          <button class="btn btn-secondary" onclick="loadExample('python-editor','python','list')">📂 List</button>
+          <button class="btn btn-secondary" onclick="loadExample('python-editor','python','oop')">📂 OOP</button>
+        </div>
+        <div class="editor-output">// Nhấn "▶ Chạy Code" để xem kết quả</div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="content-section" id="python-quiz">
+      <h2>Quiz - Kiểm Tra Kiến Thức Python</h2>
+
+      <div class="quiz-container" id="quiz-python">
+        <div class="quiz-question-block" data-correct="D">
+          <div class="quiz-question">
+            <span class="q-number">1</span>
+            Python xác định khối lệnh bằng gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Dấu ngoặc nhọn {}</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Dấu ngoặc tròn ()</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Từ khóa begin...end</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Thụt lề (Indentation)</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">2</span>
+            Kiểu dữ liệu nào bất biến (immutable) trong Python?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> list</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> tuple</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> dict</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> set</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">3</span>
+            [x**2 for x in range(5)] gọi là gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Lambda expression</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Generator</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> List comprehension</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Map function</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="A">
+          <div class="quiz-question">
+            <span class="q-number">4</span>
+            Phương thức __init__ trong class Python là gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Constructor (hàm khởi tạo)</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Destructor (hàm hủy)</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Static method</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Abstract method</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">5</span>
+            Câu lệnh nào dùng để mở file an toàn trong Python?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> file.open()</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> try: open()</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> with open() as f:</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> import file</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="checkQuiz('quiz-python')">✅ Kiểm tra</button>
+          <button class="btn btn-secondary" onclick="resetQuiz('quiz-python')">🔄 Làm lại</button>
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <strong>Programming Learning Hub</strong> — Học lập trình Python</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

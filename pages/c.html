@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Học ngôn ngữ C - Cú pháp, biến, con trỏ, mảng, hàm với ví dụ và bài tập">
+  <title>Ngôn Ngữ C - Programming Learning Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Mở menu">☰</button>
+    <a href="../index.html" class="navbar-brand">
+      <div class="logo-icon">⟨/⟩</div>
+      <span>Programming Learning Hub</span>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="c.html" class="active">C</a></li>
+      <li><a href="cpp.html">C++</a></li>
+      <li><a href="java.html">Java</a></li>
+      <li><a href="python.html">Python</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode">🌙</button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ C</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro"><span class="nav-icon c-icon">📖</span> Giới thiệu</a></li>
+        <li><a href="#syntax"><span class="nav-icon c-icon">📝</span> Cú pháp cơ bản</a></li>
+        <li><a href="#variables"><span class="nav-icon c-icon">📦</span> Biến & Kiểu dữ liệu</a></li>
+        <li><a href="#control"><span class="nav-icon c-icon">🔀</span> Điều kiện & Vòng lặp</a></li>
+        <li><a href="#functions"><span class="nav-icon c-icon">⚡</span> Hàm</a></li>
+        <li><a href="#arrays"><span class="nav-icon c-icon">📊</span> Mảng</a></li>
+        <li><a href="#pointers"><span class="nav-icon c-icon">🎯</span> Con trỏ</a></li>
+        <li><a href="#exercises"><span class="nav-icon c-icon">✏️</span> Bài tập</a></li>
+        <li><a href="#c-quiz"><span class="nav-icon c-icon">❓</span> Quiz</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Khác</div>
+      <ul class="sidebar-nav">
+        <li><a href="cpp.html"><span class="nav-icon cpp-icon">C++</span> C++</a></li>
+        <li><a href="java.html"><span class="nav-icon java-icon">☕</span> Java</a></li>
+        <li><a href="python.html"><span class="nav-icon python-icon">🐍</span> Python</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">🏠 Trang Chủ</a> <span>/</span> <span>Ngôn ngữ C</span>
+      </div>
+      <h1>
+        <span class="lang-badge c-badge">C</span>
+        Ngôn Ngữ Lập Trình C
+      </h1>
+      <p>Ngôn ngữ lập trình nền tảng, gần phần cứng - được phát triển bởi Dennis Ritchie tại Bell Labs năm 1972.</p>
+    </div>
+
+    <!-- Giới thiệu -->
+    <section class="content-section" id="intro">
+      <h2>Giới Thiệu Ngôn Ngữ C</h2>
+      <p>C là ngôn ngữ lập trình cấp thấp (low-level), mạnh mẽ và hiệu quả. C là nền tảng cho nhiều ngôn ngữ hiện đại như C++, Java, và Python.</p>
+
+      <div class="info-box note">
+        <strong>📌 Tại sao học C?</strong>
+        <ul>
+          <li>Hiểu cách máy tính hoạt động ở mức thấp</li>
+          <li>Nền tảng cho C++, Java, và nhiều ngôn ngữ khác</li>
+          <li>Dùng trong lập trình hệ thống, nhúng, game engine</li>
+          <li>Hiệu suất cao, kiểm soát bộ nhớ trực tiếp</li>
+        </ul>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C - Hello World</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>  <span class="comment">// Thư viện nhập/xuất chuẩn</span>
+
+<span class="type">int</span> <span class="function">main</span>() {           <span class="comment">// Hàm chính - điểm bắt đầu chương trình</span>
+    <span class="function">printf</span>(<span class="string">"Hello, World!\n"</span>);  <span class="comment">// In ra màn hình</span>
+    <span class="keyword">return</span> <span class="number">0</span>;            <span class="comment">// Trả về 0 = chương trình chạy thành công</span>
+}</pre>
+      </div>
+      <div class="output-block">Hello, World!</div>
+    </section>
+
+    <!-- Cú pháp cơ bản -->
+    <section class="content-section" id="syntax">
+      <h2>Cú Pháp Cơ Bản</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Cấu trúc chương trình C</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p>Mỗi chương trình C có cấu trúc cơ bản: khai báo thư viện, hàm main, các câu lệnh.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>   <span class="comment">// 1. Khai báo thư viện</span>
+
+<span class="comment">// 2. Khai báo hằng số</span>
+<span class="preprocessor">#define</span> PI <span class="number">3.14159</span>
+
+<span class="comment">// 3. Khai báo hàm phụ (nếu có)</span>
+<span class="type">void</span> <span class="function">chaoMung</span>() {
+    <span class="function">printf</span>(<span class="string">"Chao mung ban den voi C!\n"</span>);
+}
+
+<span class="comment">// 4. Hàm main - điểm bắt đầu</span>
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="function">chaoMung</span>();
+    <span class="function">printf</span>(<span class="string">"PI = %.5f\n"</span>, PI);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Chao mung ban den voi C!
+PI = 3.14159</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Nhập / Xuất dữ liệu (scanf / printf)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">char</span> ten[<span class="number">50</span>];
+    <span class="type">int</span> tuoi;
+
+    <span class="function">printf</span>(<span class="string">"Nhap ten: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%s"</span>, ten);          <span class="comment">// Đọc chuỗi</span>
+
+    <span class="function">printf</span>(<span class="string">"Nhap tuoi: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &tuoi);         <span class="comment">// Đọc số nguyên</span>
+
+    <span class="function">printf</span>(<span class="string">"Xin chao %s, ban %d tuoi!\n"</span>, ten, tuoi);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Nhap ten: An
+Nhap tuoi: 20
+Xin chao An, ban 20 tuoi!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Biến & Kiểu dữ liệu -->
+    <section class="content-section" id="variables">
+      <h2>Biến & Kiểu Dữ Liệu</h2>
+      <p>C là ngôn ngữ kiểu tĩnh - bạn phải khai báo kiểu dữ liệu trước khi sử dụng biến.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="comment">// Kiểu số nguyên</span>
+    <span class="type">int</span> soNguyen = <span class="number">42</span>;
+    <span class="type">short</span> soNgan = <span class="number">100</span>;
+    <span class="type">long</span> soDai = <span class="number">1000000</span>;
+
+    <span class="comment">// Kiểu số thực</span>
+    <span class="type">float</span> soThuc = <span class="number">3.14</span>;
+    <span class="type">double</span> soThucLon = <span class="number">3.14159265358979</span>;
+
+    <span class="comment">// Kiểu ký tự</span>
+    <span class="type">char</span> kyTu = <span class="string">'A'</span>;
+    <span class="type">char</span> chuoi[] = <span class="string">"Hello"</span>;
+
+    <span class="function">printf</span>(<span class="string">"int: %d\n"</span>, soNguyen);
+    <span class="function">printf</span>(<span class="string">"float: %.2f\n"</span>, soThuc);
+    <span class="function">printf</span>(<span class="string">"double: %.14f\n"</span>, soThucLon);
+    <span class="function">printf</span>(<span class="string">"char: %c\n"</span>, kyTu);
+    <span class="function">printf</span>(<span class="string">"string: %s\n"</span>, chuoi);
+    <span class="function">printf</span>(<span class="string">"sizeof(int): %lu bytes\n"</span>, <span class="keyword">sizeof</span>(<span class="type">int</span>));
+    <span class="function">printf</span>(<span class="string">"sizeof(double): %lu bytes\n"</span>, <span class="keyword">sizeof</span>(<span class="type">double</span>));
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">int: 42
+float: 3.14
+double: 3.14159265358979
+char: A
+string: Hello
+sizeof(int): 4 bytes
+sizeof(double): 8 bytes</div>
+    </section>
+
+    <!-- Điều kiện & Vòng lặp -->
+    <section class="content-section" id="control">
+      <h2>Câu Điều Kiện & Vòng Lặp</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>if / else / else if</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> diem = <span class="number">85</span>;
+
+    <span class="keyword">if</span> (diem >= <span class="number">90</span>) {
+        <span class="function">printf</span>(<span class="string">"Xep loai: A (Xuat sac)\n"</span>);
+    } <span class="keyword">else if</span> (diem >= <span class="number">80</span>) {
+        <span class="function">printf</span>(<span class="string">"Xep loai: B (Gioi)\n"</span>);
+    } <span class="keyword">else if</span> (diem >= <span class="number">65</span>) {
+        <span class="function">printf</span>(<span class="string">"Xep loai: C (Kha)\n"</span>);
+    } <span class="keyword">else</span> {
+        <span class="function">printf</span>(<span class="string">"Xep loai: D (Can co gang)\n"</span>);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Xep loai: B (Gioi)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>switch / case</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> ngay = <span class="number">3</span>;
+
+    <span class="keyword">switch</span> (ngay) {
+        <span class="keyword">case</span> <span class="number">1</span>: <span class="function">printf</span>(<span class="string">"Thu Hai\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">2</span>: <span class="function">printf</span>(<span class="string">"Thu Ba\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">3</span>: <span class="function">printf</span>(<span class="string">"Thu Tu\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">4</span>: <span class="function">printf</span>(<span class="string">"Thu Nam\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">5</span>: <span class="function">printf</span>(<span class="string">"Thu Sau\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">default</span>: <span class="function">printf</span>(<span class="string">"Cuoi tuan\n"</span>);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Thu Tu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Vòng lặp for, while, do...while</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="comment">// Vòng lặp for: in bảng cửu chương 5</span>
+    <span class="function">printf</span>(<span class="string">"--- Bang cuu chuong 5 ---\n"</span>);
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+        <span class="function">printf</span>(<span class="string">"5 x %d = %d\n"</span>, i, <span class="number">5</span> * i);
+    }
+
+    <span class="comment">// Vòng lặp while: đếm ngược</span>
+    <span class="function">printf</span>(<span class="string">"\n--- Dem nguoc ---\n"</span>);
+    <span class="type">int</span> n = <span class="number">5</span>;
+    <span class="keyword">while</span> (n > <span class="number">0</span>) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, n);
+        n--;
+    }
+    <span class="function">printf</span>(<span class="string">"\nPhong!\n"</span>);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">--- Bang cuu chuong 5 ---
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+
+--- Dem nguoc ---
+5 4 3 2 1
+Phong!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hàm -->
+    <section class="content-section" id="functions">
+      <h2>Hàm (Functions)</h2>
+      <p>Hàm giúp chia chương trình thành các phần nhỏ, dễ quản lý và tái sử dụng.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="comment">// Hàm tính diện tích hình chữ nhật</span>
+<span class="type">float</span> <span class="function">dienTich</span>(<span class="type">float</span> dai, <span class="type">float</span> rong) {
+    <span class="keyword">return</span> dai * rong;
+}
+
+<span class="comment">// Hàm tính chu vi</span>
+<span class="type">float</span> <span class="function">chuVi</span>(<span class="type">float</span> dai, <span class="type">float</span> rong) {
+    <span class="keyword">return</span> <span class="number">2</span> * (dai + rong);
+}
+
+<span class="comment">// Hàm hoán đổi giá trị (dùng con trỏ)</span>
+<span class="type">void</span> <span class="function">hoanDoi</span>(<span class="type">int</span> *a, <span class="type">int</span> *b) {
+    <span class="type">int</span> temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="function">printf</span>(<span class="string">"Dien tich: %.1f\n"</span>, <span class="function">dienTich</span>(<span class="number">5</span>, <span class="number">3</span>));
+    <span class="function">printf</span>(<span class="string">"Chu vi: %.1f\n"</span>, <span class="function">chuVi</span>(<span class="number">5</span>, <span class="number">3</span>));
+
+    <span class="type">int</span> x = <span class="number">10</span>, y = <span class="number">20</span>;
+    <span class="function">printf</span>(<span class="string">"Truoc: x=%d, y=%d\n"</span>, x, y);
+    <span class="function">hoanDoi</span>(&x, &y);
+    <span class="function">printf</span>(<span class="string">"Sau:   x=%d, y=%d\n"</span>, x, y);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">Dien tich: 15.0
+Chu vi: 16.0
+Truoc: x=10, y=20
+Sau:   x=20, y=10</div>
+    </section>
+
+    <!-- Mảng -->
+    <section class="content-section" id="arrays">
+      <h2>Mảng (Arrays)</h2>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="comment">// Khai báo và khởi tạo mảng</span>
+    <span class="type">int</span> diem[] = {<span class="number">85</span>, <span class="number">92</span>, <span class="number">76</span>, <span class="number">88</span>, <span class="number">95</span>};
+    <span class="type">int</span> n = <span class="keyword">sizeof</span>(diem) / <span class="keyword">sizeof</span>(diem[<span class="number">0</span>]);
+
+    <span class="comment">// Tìm max, min, tổng</span>
+    <span class="type">int</span> max = diem[<span class="number">0</span>], min = diem[<span class="number">0</span>], tong = <span class="number">0</span>;
+
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < n; i++) {
+        <span class="function">printf</span>(<span class="string">"diem[%d] = %d\n"</span>, i, diem[i]);
+        tong += diem[i];
+        <span class="keyword">if</span> (diem[i] > max) max = diem[i];
+        <span class="keyword">if</span> (diem[i] < min) min = diem[i];
+    }
+
+    <span class="function">printf</span>(<span class="string">"Max: %d\n"</span>, max);
+    <span class="function">printf</span>(<span class="string">"Min: %d\n"</span>, min);
+    <span class="function">printf</span>(<span class="string">"Trung binh: %.1f\n"</span>, (<span class="type">float</span>)tong / n);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">diem[0] = 85
+diem[1] = 92
+diem[2] = 76
+diem[3] = 88
+diem[4] = 95
+Max: 95
+Min: 76
+Trung binh: 87.2</div>
+    </section>
+
+    <!-- Con trỏ -->
+    <section class="content-section" id="pointers">
+      <h2>Con Trỏ (Pointers)</h2>
+      <p>Con trỏ lưu trữ địa chỉ bộ nhớ. Đây là tính năng đặc trưng và mạnh mẽ nhất của C.</p>
+
+      <div class="info-box warning">
+        <strong>⚠️ Cẩn thận với con trỏ:</strong> Sử dụng sai con trỏ có thể gây ra segmentation fault, memory leak, hoặc undefined behavior!
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="comment">// === Con trỏ cơ bản ===</span>
+    <span class="type">int</span> x = <span class="number">42</span>;
+    <span class="type">int</span> *ptr = &x;    <span class="comment">// ptr trỏ đến x</span>
+
+    <span class="function">printf</span>(<span class="string">"x = %d\n"</span>, x);
+    <span class="function">printf</span>(<span class="string">"&x = %p\n"</span>, &x);
+    <span class="function">printf</span>(<span class="string">"ptr = %p\n"</span>, ptr);
+    <span class="function">printf</span>(<span class="string">"*ptr = %d\n"</span>, *ptr);
+
+    <span class="comment">// === Cấp phát bộ nhớ động ===</span>
+    <span class="type">int</span> *arr = (<span class="type">int</span> *)<span class="function">malloc</span>(<span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>));
+
+    arr[<span class="number">0</span>] = <span class="number">10</span>;
+    arr[<span class="number">1</span>] = <span class="number">20</span>;
+    arr[<span class="number">2</span>] = <span class="number">30</span>;
+
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < <span class="number">3</span>; i++) {
+        <span class="function">printf</span>(<span class="string">"arr[%d] = %d\n"</span>, i, arr[i]);
+    }
+
+    <span class="function">free</span>(arr);  <span class="comment">// Giải phóng bộ nhớ</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">x = 42
+&x = 0x7ffd5e8c3abc
+ptr = 0x7ffd5e8c3abc
+*ptr = 42
+arr[0] = 10
+arr[1] = 20
+arr[2] = 30</div>
+    </section>
+
+    <!-- Bài tập -->
+    <section class="content-section" id="exercises">
+      <h2>Bài Tập Luyện Tập</h2>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 1: Tính tổng từ 1 đến N</h4>
+        <p>Viết chương trình nhập số nguyên N, tính tổng 1 + 2 + ... + N và in kết quả.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 2: Kiểm tra số nguyên tố</h4>
+        <p>Viết hàm kiểm tra một số có phải số nguyên tố không. In ra 20 số nguyên tố đầu tiên.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 3: Sắp xếp mảng</h4>
+        <p>Viết chương trình nhập mảng N phần tử, sắp xếp tăng dần bằng thuật toán Bubble Sort.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 4: Chuỗi đảo ngược</h4>
+        <p>Viết hàm đảo ngược chuỗi ký tự sử dụng con trỏ (không dùng hàm thư viện).</p>
+      </div>
+
+      <!-- Interactive Editor -->
+      <h3 class="mt-3">💻 Thử viết code:</h3>
+      <div class="code-editor" id="c-editor">
+        <div class="editor-tabs">
+          <button class="editor-tab active">C</button>
+        </div>
+        <div class="editor-area">
+          <textarea spellcheck="false" placeholder="// Viết code C tại đây...">#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</textarea>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-success" onclick="runCode('c-editor')">▶ Chạy Code</button>
+          <button class="btn btn-secondary" onclick="clearEditor('c-editor')">🗑️ Xóa</button>
+          <button class="btn btn-secondary" onclick="loadExample('c-editor','c','hello')">📂 Hello World</button>
+          <button class="btn btn-secondary" onclick="loadExample('c-editor','c','variables')">📂 Variables</button>
+          <button class="btn btn-secondary" onclick="loadExample('c-editor','c','loop')">📂 Vòng lặp</button>
+        </div>
+        <div class="editor-output">// Nhấn "▶ Chạy Code" để xem kết quả</div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="content-section" id="c-quiz">
+      <h2>Quiz - Kiểm Tra Kiến Thức C</h2>
+
+      <div class="quiz-container" id="quiz-c">
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">1</span>
+            Hàm nào dùng để in ra màn hình trong C?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> print()</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> printf()</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> cout</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> echo()</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">2</span>
+            Toán tử & trong C dùng để làm gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Phép AND logic</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Phép nhân</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Lấy địa chỉ biến</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> So sánh bằng</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="A">
+          <div class="quiz-question">
+            <span class="q-number">3</span>
+            Kích thước kiểu int thường là bao nhiêu byte?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> 4 bytes</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> 2 bytes</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> 8 bytes</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> 1 byte</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="D">
+          <div class="quiz-question">
+            <span class="q-number">4</span>
+            Hàm free() dùng để làm gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Tạo biến mới</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> In ra màn hình</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Đọc file</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Giải phóng bộ nhớ</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="checkQuiz('quiz-c')">✅ Kiểm tra</button>
+          <button class="btn btn-secondary" onclick="resetQuiz('quiz-c')">🔄 Làm lại</button>
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <strong>Programming Learning Hub</strong> — Học lập trình C</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

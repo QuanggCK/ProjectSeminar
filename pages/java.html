@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Học ngôn ngữ Java - OOP, Classes, Inheritance, Interfaces với ví dụ và bài tập">
+  <title>Ngôn Ngữ Java - Programming Learning Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Mở menu">☰</button>
+    <a href="../index.html" class="navbar-brand">
+      <div class="logo-icon">⟨/⟩</div>
+      <span>Programming Learning Hub</span>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="c.html">C</a></li>
+      <li><a href="cpp.html">C++</a></li>
+      <li><a href="java.html" class="active">Java</a></li>
+      <li><a href="python.html">Python</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode">🌙</button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Java</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro"><span class="nav-icon java-icon">📖</span> Giới thiệu</a></li>
+        <li><a href="#syntax"><span class="nav-icon java-icon">📝</span> Cú pháp cơ bản</a></li>
+        <li><a href="#oop"><span class="nav-icon java-icon">🏗️</span> OOP</a></li>
+        <li><a href="#interfaces"><span class="nav-icon java-icon">🔌</span> Interfaces</a></li>
+        <li><a href="#collections"><span class="nav-icon java-icon">📚</span> Collections</a></li>
+        <li><a href="#exceptions"><span class="nav-icon java-icon">⚠️</span> Exceptions</a></li>
+        <li><a href="#exercises"><span class="nav-icon java-icon">✏️</span> Bài tập</a></li>
+        <li><a href="#java-quiz"><span class="nav-icon java-icon">❓</span> Quiz</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Khác</div>
+      <ul class="sidebar-nav">
+        <li><a href="c.html"><span class="nav-icon c-icon">C</span> C</a></li>
+        <li><a href="cpp.html"><span class="nav-icon cpp-icon">C++</span> C++</a></li>
+        <li><a href="python.html"><span class="nav-icon python-icon">🐍</span> Python</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">🏠 Trang Chủ</a> <span>/</span> <span>Ngôn ngữ Java</span>
+      </div>
+      <h1>
+        <span class="lang-badge java-badge">Java</span>
+        Ngôn Ngữ Lập Trình Java
+      </h1>
+      <p>"Write Once, Run Anywhere" - Ngôn ngữ OOP phổ biến nhất do James Gosling phát triển tại Sun Microsystems (1995).</p>
+    </div>
+
+    <!-- Giới thiệu -->
+    <section class="content-section" id="intro">
+      <h2>Giới Thiệu Java</h2>
+      <p>Java là ngôn ngữ lập trình hướng đối tượng, chạy trên JVM (Java Virtual Machine), platform-independent. Java được dùng rộng rãi trong ứng dụng doanh nghiệp, Android, và web backend.</p>
+
+      <div class="info-box note">
+        <strong>📌 Đặc điểm của Java:</strong>
+        <ul>
+          <li>Hướng đối tượng hoàn toàn (mọi thứ là Object)</li>
+          <li>Tự động quản lý bộ nhớ (Garbage Collection)</li>
+          <li>Chạy trên mọi nền tảng có JVM</li>
+          <li>Hệ sinh thái thư viện khổng lồ</li>
+        </ul>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Java - Hello World</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="comment">// Tên file phải trùng tên class: Main.java</span>
+<span class="keyword">public class</span> <span class="class-name">Main</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        System.out.<span class="function">println</span>(<span class="string">"Hello, Java!"</span>);
+    }
+}</pre>
+      </div>
+      <div class="output-block">Hello, Java!</div>
+    </section>
+
+    <!-- Cú pháp cơ bản -->
+    <section class="content-section" id="syntax">
+      <h2>Cú Pháp Cơ Bản</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Biến & Kiểu dữ liệu</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">public class</span> <span class="class-name">DataTypes</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Kiểu dữ liệu nguyên thủy (Primitive)</span>
+        <span class="type">byte</span> b = <span class="number">127</span>;         <span class="comment">// 1 byte</span>
+        <span class="type">short</span> s = <span class="number">32767</span>;      <span class="comment">// 2 bytes</span>
+        <span class="type">int</span> i = <span class="number">2147483647</span>;   <span class="comment">// 4 bytes</span>
+        <span class="type">long</span> l = <span class="number">9223372036854775807L</span>; <span class="comment">// 8 bytes</span>
+        <span class="type">float</span> f = <span class="number">3.14f</span>;      <span class="comment">// 4 bytes</span>
+        <span class="type">double</span> d = <span class="number">3.14159265</span>; <span class="comment">// 8 bytes</span>
+        <span class="type">char</span> c = <span class="string">'A'</span>;         <span class="comment">// 2 bytes (Unicode)</span>
+        <span class="type">boolean</span> ok = <span class="keyword">true</span>;    <span class="comment">// true/false</span>
+
+        <span class="comment">// Kiểu tham chiếu (Reference)</span>
+        <span class="type">String</span> name = <span class="string">"Java"</span>;
+        <span class="type">int</span>[] arr = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>};
+
+        System.out.<span class="function">println</span>(<span class="string">"int: "</span> + i);
+        System.out.<span class="function">println</span>(<span class="string">"double: "</span> + d);
+        System.out.<span class="function">println</span>(<span class="string">"String: "</span> + name);
+        System.out.<span class="function">println</span>(<span class="string">"boolean: "</span> + ok);
+    }
+}</pre>
+            </div>
+            <div class="output-block">int: 2147483647
+double: 3.14159265
+String: Java
+boolean: true</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Điều kiện & Vòng lặp</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">public class</span> <span class="class-name">ControlFlow</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// if-else</span>
+        <span class="type">int</span> diem = <span class="number">85</span>;
+        <span class="keyword">if</span> (diem >= <span class="number">90</span>) {
+            System.out.<span class="function">println</span>(<span class="string">"Xuat sac"</span>);
+        } <span class="keyword">else if</span> (diem >= <span class="number">80</span>) {
+            System.out.<span class="function">println</span>(<span class="string">"Gioi"</span>);
+        } <span class="keyword">else</span> {
+            System.out.<span class="function">println</span>(<span class="string">"Can co gang"</span>);
+        }
+
+        <span class="comment">// for-each loop</span>
+        <span class="type">String</span>[] fruits = {<span class="string">"Tao"</span>, <span class="string">"Cam"</span>, <span class="string">"Chuoi"</span>};
+        <span class="keyword">for</span> (<span class="type">String</span> fruit : fruits) {
+            System.out.<span class="function">println</span>(<span class="string">"Trai cay: "</span> + fruit);
+        }
+
+        <span class="comment">// while loop</span>
+        <span class="type">int</span> n = <span class="number">3</span>;
+        <span class="keyword">while</span> (n > <span class="number">0</span>) {
+            System.out.<span class="function">println</span>(<span class="string">"Dem: "</span> + n);
+            n--;
+        }
+    }
+}</pre>
+            </div>
+            <div class="output-block">Gioi
+Trai cay: Tao
+Trai cay: Cam
+Trai cay: Chuoi
+Dem: 3
+Dem: 2
+Dem: 1</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OOP -->
+    <section class="content-section" id="oop">
+      <h2>Lập Trình Hướng Đối Tượng (OOP)</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Class, Constructor & Encapsulation</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">class</span> <span class="class-name">SinhVien</span> {
+    <span class="comment">// Thuộc tính - Encapsulation (đóng gói)</span>
+    <span class="keyword">private</span> <span class="type">String</span> ten;
+    <span class="keyword">private</span> <span class="type">int</span> tuoi;
+    <span class="keyword">private</span> <span class="type">double</span> diemTB;
+
+    <span class="comment">// Constructor</span>
+    <span class="keyword">public</span> <span class="function">SinhVien</span>(<span class="type">String</span> ten, <span class="type">int</span> tuoi, <span class="type">double</span> diemTB) {
+        <span class="keyword">this</span>.ten = ten;
+        <span class="keyword">this</span>.tuoi = tuoi;
+        <span class="keyword">this</span>.diemTB = diemTB;
+    }
+
+    <span class="comment">// Getter & Setter</span>
+    <span class="keyword">public</span> <span class="type">String</span> <span class="function">getTen</span>() { <span class="keyword">return</span> ten; }
+    <span class="keyword">public</span> <span class="type">double</span> <span class="function">getDiemTB</span>() { <span class="keyword">return</span> diemTB; }
+
+    <span class="comment">// Phương thức</span>
+    <span class="keyword">public</span> <span class="type">String</span> <span class="function">xepLoai</span>() {
+        <span class="keyword">if</span> (diemTB >= <span class="number">8.5</span>) <span class="keyword">return</span> <span class="string">"Gioi"</span>;
+        <span class="keyword">if</span> (diemTB >= <span class="number">7.0</span>) <span class="keyword">return</span> <span class="string">"Kha"</span>;
+        <span class="keyword">if</span> (diemTB >= <span class="number">5.0</span>) <span class="keyword">return</span> <span class="string">"Trung binh"</span>;
+        <span class="keyword">return</span> <span class="string">"Yeu"</span>;
+    }
+
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">hienThi</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Ten: "</span> + ten + <span class="string">", Tuoi: "</span> + tuoi +
+                <span class="string">", Diem: "</span> + diemTB + <span class="string">", Xep loai: "</span> + <span class="function">xepLoai</span>());
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Main</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="class-name">SinhVien</span> sv = <span class="keyword">new</span> <span class="class-name">SinhVien</span>(<span class="string">"Nguyen Van A"</span>, <span class="number">20</span>, <span class="number">8.7</span>);
+        sv.<span class="function">hienThi</span>();
+    }
+}</pre>
+            </div>
+            <div class="output-block">Ten: Nguyen Van A, Tuoi: 20, Diem: 8.7, Xep loai: Gioi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Kế thừa (Inheritance) & Đa hình (Polymorphism)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment">// Lớp cha (Superclass)</span>
+<span class="keyword">class</span> <span class="class-name">Animal</span> {
+    <span class="keyword">protected</span> <span class="type">String</span> name;
+
+    <span class="keyword">public</span> <span class="function">Animal</span>(<span class="type">String</span> name) {
+        <span class="keyword">this</span>.name = name;
+    }
+
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">speak</span>() {
+        System.out.<span class="function">println</span>(name + <span class="string">" makes a sound"</span>);
+    }
+}
+
+<span class="comment">// Lớp con (Subclass) - Override phương thức</span>
+<span class="keyword">class</span> <span class="class-name">Dog</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="keyword">public</span> <span class="function">Dog</span>(<span class="type">String</span> name) {
+        <span class="keyword">super</span>(name);  <span class="comment">// Gọi constructor lớp cha</span>
+    }
+
+    <span class="decorator">@Override</span>
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">speak</span>() {
+        System.out.<span class="function">println</span>(name + <span class="string">" says: Woof!"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Cat</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="keyword">public</span> <span class="function">Cat</span>(<span class="type">String</span> name) {
+        <span class="keyword">super</span>(name);
+    }
+
+    <span class="decorator">@Override</span>
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">speak</span>() {
+        System.out.<span class="function">println</span>(name + <span class="string">" says: Meow!"</span>);
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Main</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Đa hình - biến lớp cha chứa đối tượng lớp con</span>
+        <span class="class-name">Animal</span>[] animals = {
+            <span class="keyword">new</span> <span class="class-name">Dog</span>(<span class="string">"Buddy"</span>),
+            <span class="keyword">new</span> <span class="class-name">Cat</span>(<span class="string">"Kitty"</span>),
+            <span class="keyword">new</span> <span class="class-name">Animal</span>(<span class="string">"Unknown"</span>)
+        };
+
+        <span class="keyword">for</span> (<span class="class-name">Animal</span> a : animals) {
+            a.<span class="function">speak</span>();  <span class="comment">// Gọi phương thức tùy theo kiểu thực</span>
+        }
+    }
+}</pre>
+            </div>
+            <div class="output-block">Buddy says: Woof!
+Kitty says: Meow!
+Unknown makes a sound</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interfaces -->
+    <section class="content-section" id="interfaces">
+      <h2>Interfaces</h2>
+      <p>Interface là "hợp đồng" mà class phải tuân thủ. Một class có thể implement nhiều interfaces.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Java</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="comment">// Khai báo Interface</span>
+<span class="keyword">interface</span> <span class="class-name">Drawable</span> {
+    <span class="type">void</span> <span class="function">draw</span>();           <span class="comment">// Phương thức trừu tượng</span>
+    <span class="type">double</span> <span class="function">getArea</span>();       <span class="comment">// Phương thức trừu tượng</span>
+}
+
+<span class="keyword">interface</span> <span class="class-name">Resizable</span> {
+    <span class="type">void</span> <span class="function">resize</span>(<span class="type">double</span> factor);
+}
+
+<span class="comment">// Class implement nhiều interfaces</span>
+<span class="keyword">class</span> <span class="class-name">Circle</span> <span class="keyword">implements</span> <span class="class-name">Drawable</span>, <span class="class-name">Resizable</span> {
+    <span class="keyword">private</span> <span class="type">double</span> radius;
+
+    <span class="keyword">public</span> <span class="function">Circle</span>(<span class="type">double</span> r) { radius = r; }
+
+    <span class="decorator">@Override</span>
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">draw</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Drawing circle, r = "</span> + radius);
+    }
+
+    <span class="decorator">@Override</span>
+    <span class="keyword">public</span> <span class="type">double</span> <span class="function">getArea</span>() {
+        <span class="keyword">return</span> Math.PI * radius * radius;
+    }
+
+    <span class="decorator">@Override</span>
+    <span class="keyword">public</span> <span class="type">void</span> <span class="function">resize</span>(<span class="type">double</span> factor) {
+        radius *= factor;
+        System.out.<span class="function">println</span>(<span class="string">"Resized to r = "</span> + radius);
+    }
+}
+
+<span class="keyword">public class</span> <span class="class-name">Main</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="class-name">Circle</span> c = <span class="keyword">new</span> <span class="class-name">Circle</span>(<span class="number">5</span>);
+        c.<span class="function">draw</span>();
+        System.out.<span class="function">println</span>(<span class="string">"Area: "</span> + String.<span class="function">format</span>(<span class="string">"%.2f"</span>, c.<span class="function">getArea</span>()));
+        c.<span class="function">resize</span>(<span class="number">2</span>);
+        System.out.<span class="function">println</span>(<span class="string">"New area: "</span> + String.<span class="function">format</span>(<span class="string">"%.2f"</span>, c.<span class="function">getArea</span>()));
+    }
+}</pre>
+      </div>
+      <div class="output-block">Drawing circle, r = 5.0
+Area: 78.54
+Resized to r = 10.0
+New area: 314.16</div>
+    </section>
+
+    <!-- Collections -->
+    <section class="content-section" id="collections">
+      <h2>Collections Framework</h2>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Java</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="keyword">import</span> java.util.*;
+
+<span class="keyword">public class</span> <span class="class-name">CollectionsDemo</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// === ArrayList ===</span>
+        <span class="class-name">ArrayList</span><<span class="type">String</span>> names = <span class="keyword">new</span> <span class="class-name">ArrayList</span><>();
+        names.<span class="function">add</span>(<span class="string">"An"</span>);
+        names.<span class="function">add</span>(<span class="string">"Binh"</span>);
+        names.<span class="function">add</span>(<span class="string">"Cuong"</span>);
+        Collections.<span class="function">sort</span>(names);
+        System.out.<span class="function">println</span>(<span class="string">"ArrayList: "</span> + names);
+
+        <span class="comment">// === HashMap ===</span>
+        <span class="class-name">HashMap</span><<span class="type">String</span>, <span class="type">Integer</span>> scores = <span class="keyword">new</span> <span class="class-name">HashMap</span><>();
+        scores.<span class="function">put</span>(<span class="string">"An"</span>, <span class="number">85</span>);
+        scores.<span class="function">put</span>(<span class="string">"Binh"</span>, <span class="number">92</span>);
+        scores.<span class="function">put</span>(<span class="string">"Cuong"</span>, <span class="number">78</span>);
+
+        System.out.<span class="function">println</span>(<span class="string">"\nDiem sinh vien:"</span>);
+        <span class="keyword">for</span> (<span class="class-name">Map</span>.<span class="class-name">Entry</span><<span class="type">String</span>, <span class="type">Integer</span>> entry : scores.<span class="function">entrySet</span>()) {
+            System.out.<span class="function">println</span>(entry.<span class="function">getKey</span>() + <span class="string">": "</span> + entry.<span class="function">getValue</span>());
+        }
+
+        <span class="comment">// === HashSet ===</span>
+        <span class="class-name">HashSet</span><<span class="type">Integer</span>> uniqueNums = <span class="keyword">new</span> <span class="class-name">HashSet</span><<>>(Arrays.<span class="function">asList</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>));
+        System.out.<span class="function">println</span>(<span class="string">"\nHashSet (unique): "</span> + uniqueNums);
+    }
+}</pre>
+      </div>
+      <div class="output-block">ArrayList: [An, Binh, Cuong]
+
+Diem sinh vien:
+An: 85
+Binh: 92
+Cuong: 78
+
+HashSet (unique): [1, 2, 3]</div>
+    </section>
+
+    <!-- Exception Handling -->
+    <section class="content-section" id="exceptions">
+      <h2>Xử Lý Ngoại Lệ (Exception Handling)</h2>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Java</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="keyword">public class</span> <span class="class-name">ExceptionDemo</span> {
+    <span class="keyword">public static</span> <span class="type">int</span> <span class="function">chia</span>(<span class="type">int</span> a, <span class="type">int</span> b) <span class="keyword">throws</span> <span class="class-name">ArithmeticException</span> {
+        <span class="keyword">if</span> (b == <span class="number">0</span>) {
+            <span class="keyword">throw new</span> <span class="class-name">ArithmeticException</span>(<span class="string">"Khong the chia cho 0!"</span>);
+        }
+        <span class="keyword">return</span> a / b;
+    }
+
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="keyword">try</span> {
+            <span class="type">int</span> result = <span class="function">chia</span>(<span class="number">10</span>, <span class="number">3</span>);
+            System.out.<span class="function">println</span>(<span class="string">"10 / 3 = "</span> + result);
+
+            result = <span class="function">chia</span>(<span class="number">10</span>, <span class="number">0</span>);  <span class="comment">// Gây exception!</span>
+            System.out.<span class="function">println</span>(<span class="string">"Dong nay khong chay"</span>);
+
+        } <span class="keyword">catch</span> (<span class="class-name">ArithmeticException</span> e) {
+            System.out.<span class="function">println</span>(<span class="string">"Loi: "</span> + e.<span class="function">getMessage</span>());
+
+        } <span class="keyword">finally</span> {
+            System.out.<span class="function">println</span>(<span class="string">"Block finally luon chay!"</span>);
+        }
+    }
+}</pre>
+      </div>
+      <div class="output-block">10 / 3 = 3
+Loi: Khong the chia cho 0!
+Block finally luon chay!</div>
+    </section>
+
+    <!-- Bài tập -->
+    <section class="content-section" id="exercises">
+      <h2>Bài Tập Luyện Tập</h2>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 1: Quản lý danh sách sinh viên</h4>
+        <p>Tạo class SinhVien, dùng ArrayList lưu danh sách, implement: thêm, xóa, tìm kiếm, sắp xếp theo điểm.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 2: Hệ thống hình học</h4>
+        <p>Tạo interface Shape với getArea() và getPerimeter(). Implement: Circle, Rectangle, Triangle.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 3: Bài toán ngân hàng</h4>
+        <p>Tạo class BankAccount với nạp tiền, rút tiền (kiểm tra số dư), chuyển khoản. Xử lý exception khi số dư không đủ.</p>
+      </div>
+
+      <h3 class="mt-3">💻 Thử viết code:</h3>
+      <div class="code-editor" id="java-editor">
+        <div class="editor-tabs">
+          <button class="editor-tab active">☕ Java</button>
+        </div>
+        <div class="editor-area">
+          <textarea spellcheck="false">public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}</textarea>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-success" onclick="runCode('java-editor')">▶ Chạy Code</button>
+          <button class="btn btn-secondary" onclick="clearEditor('java-editor')">🗑️ Xóa</button>
+          <button class="btn btn-secondary" onclick="loadExample('java-editor','java','hello')">📂 Hello World</button>
+          <button class="btn btn-secondary" onclick="loadExample('java-editor','java','oop')">📂 OOP</button>
+        </div>
+        <div class="editor-output">// Nhấn "▶ Chạy Code" để xem kết quả</div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="content-section" id="java-quiz">
+      <h2>Quiz - Kiểm Tra Kiến Thức Java</h2>
+
+      <div class="quiz-container" id="quiz-java">
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">1</span>
+            Từ khóa nào dùng để kế thừa trong Java?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> inherits</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> extends</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> implements</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> super</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">2</span>
+            Java có hỗ trợ đa kế thừa (multiple inheritance) không?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Có, qua class</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Không hỗ trợ</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Có, qua interfaces</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Có, qua abstract class</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="A">
+          <div class="quiz-question">
+            <span class="q-number">3</span>
+            Collection nào không cho phép phần tử trùng lặp?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> HashSet</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> ArrayList</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> LinkedList</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Stack</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="D">
+          <div class="quiz-question">
+            <span class="q-number">4</span>
+            Block nào luôn được thực thi dù có exception hay không?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> try</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> catch</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> throw</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> finally</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="checkQuiz('quiz-java')">✅ Kiểm tra</button>
+          <button class="btn btn-secondary" onclick="resetQuiz('quiz-java')">🔄 Làm lại</button>
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <strong>Programming Learning Hub</strong> — Học lập trình Java</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

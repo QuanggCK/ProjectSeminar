@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Programming Learning Hub - Học lập trình trực quan C, C++, Java, Python với ví dụ code, bài tập và quiz tương tác">
+  <title>Programming Learning Hub - Học Lập Trình Trực Quan</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon (SVG inline) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR - Thanh điều hướng chính
+       ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <!-- Nút mở sidebar (chỉ hiện trên mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Mở menu">☰</button>
+
+    <!-- Logo & Tên website -->
+    <a href="index.html" class="navbar-brand">
+      <div class="logo-icon">⟨/⟩</div>
+      <span>Programming Learning Hub</span>
+    </a>
+
+    <!-- Menu điều hướng chính -->
+    <ul class="navbar-links">
+      <li><a href="index.html" class="active">Trang Chủ</a></li>
+      <li><a href="#languages">Ngôn Ngữ</a></li>
+      <li><a href="#concepts">Khái Niệm</a></li>
+      <li><a href="#setup">Cài Đặt</a></li>
+      <li><a href="#interactive">Thực Hành</a></li>
+    </ul>
+
+    <!-- Nút chức năng -->
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Chuyển Dark/Light Mode">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Overlay khi sidebar mở (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ============================================================
+       SIDEBAR - Thanh điều hướng bên
+       ============================================================ -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Phần Ngôn ngữ -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Lập Trình</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="pages/c.html">
+            <span class="nav-icon c-icon">C</span>
+            Ngôn ngữ C
+          </a>
+        </li>
+        <li>
+          <a href="pages/cpp.html">
+            <span class="nav-icon cpp-icon">C++</span>
+            Ngôn ngữ C++
+          </a>
+        </li>
+        <li>
+          <a href="pages/java.html">
+            <span class="nav-icon java-icon">☕</span>
+            Ngôn ngữ Java
+          </a>
+        </li>
+        <li>
+          <a href="pages/python.html">
+            <span class="nav-icon python-icon">🐍</span>
+            Ngôn ngữ Python
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Phần Khái niệm -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Khái Niệm Cơ Bản</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">📦</span>
+            Biến & Kiểu dữ liệu
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">🔀</span>
+            Câu điều kiện
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">🔁</span>
+            Vòng lặp
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">⚡</span>
+            Hàm
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">📊</span>
+            Mảng
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">🎯</span>
+            Con trỏ
+          </a>
+        </li>
+        <li>
+          <a href="#concepts">
+            <span class="nav-icon concept-icon">🏗️</span>
+            OOP
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Phần Cài đặt -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Hướng Dẫn Cài Đặt</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#setup">
+            <span class="nav-icon setup-icon">🔧</span>
+            Cài đặt công cụ
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       MAIN CONTENT - Nội dung chính
+       ============================================================ -->
+  <main class="main-content">
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>🚀 Programming Learning Hub</h1>
+        <p>Nền tảng học lập trình trực quan, dễ hiểu dành cho sinh viên. Khám phá C, C++, Java và Python với ví dụ code, bài tập tương tác và quiz kiểm tra kiến thức.</p>
+        <a href="#languages" class="hero-btn">
+          Bắt đầu học ngay →
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== SEARCH BAR ========== -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input"
+             placeholder="Tìm kiếm chủ đề, ngôn ngữ, khái niệm..." aria-label="Tìm kiếm">
+    </div>
+
+    <!-- ========== LANGUAGE CARDS ========== -->
+    <section id="languages">
+      <div class="section-title">
+        <div class="section-icon">📚</div>
+        <h2>Ngôn Ngữ Lập Trình</h2>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card: C -->
+        <a href="pages/c.html" class="lang-card c-card animate-fadeInUp">
+          <div class="card-icon">C</div>
+          <div class="card-title">Ngôn ngữ C</div>
+          <p class="card-desc">Ngôn ngữ lập trình nền tảng, gần phần cứng. Học quản lý bộ nhớ, con trỏ và lập trình hệ thống.</p>
+          <div class="card-tags">
+            <span>Procedural</span>
+            <span>Low-level</span>
+            <span>Pointers</span>
+            <span>System</span>
+          </div>
+        </a>
+
+        <!-- Card: C++ -->
+        <a href="pages/cpp.html" class="lang-card cpp-card animate-fadeInUp">
+          <div class="card-icon">C++</div>
+          <div class="card-title">Ngôn ngữ C++</div>
+          <p class="card-desc">Mở rộng của C với OOP, templates và STL. Dùng trong game, hệ thống nhúng và ứng dụng hiệu suất cao.</p>
+          <div class="card-tags">
+            <span>OOP</span>
+            <span>Templates</span>
+            <span>STL</span>
+            <span>Performance</span>
+          </div>
+        </a>
+
+        <!-- Card: Java -->
+        <a href="pages/java.html" class="lang-card java-card animate-fadeInUp">
+          <div class="card-icon">☕</div>
+          <div class="card-title">Ngôn ngữ Java</div>
+          <p class="card-desc">Ngôn ngữ OOP phổ biến nhất thế giới. "Write Once, Run Anywhere" - phát triển ứng dụng doanh nghiệp và Android.</p>
+          <div class="card-tags">
+            <span>OOP</span>
+            <span>JVM</span>
+            <span>Enterprise</span>
+            <span>Android</span>
+          </div>
+        </a>
+
+        <!-- Card: Python -->
+        <a href="pages/python.html" class="lang-card python-card animate-fadeInUp">
+          <div class="card-icon">🐍</div>
+          <div class="card-title">Ngôn ngữ Python</div>
+          <p class="card-desc">Ngôn ngữ dễ học, cú pháp đơn giản. Ứng dụng rộng rãi trong AI, Data Science, Web và Automation.</p>
+          <div class="card-tags">
+            <span>Easy to learn</span>
+            <span>AI/ML</span>
+            <span>Data Science</span>
+            <span>Web</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== PROGRAMMING CONCEPTS ========== -->
+    <section id="concepts">
+      <div class="section-title">
+        <div class="section-icon">💡</div>
+        <h2>Khái Niệm Lập Trình Cơ Bản</h2>
+      </div>
+
+      <div class="concept-grid">
+        <!-- Biến -->
+        <div class="concept-card" onclick="document.getElementById('sec-variables').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">📦</div>
+          <h4>Biến (Variables)</h4>
+          <p>Nơi lưu trữ dữ liệu trong chương trình</p>
+        </div>
+
+        <!-- Kiểu dữ liệu -->
+        <div class="concept-card" onclick="document.getElementById('sec-datatypes').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">🏷️</div>
+          <h4>Kiểu dữ liệu (Data Types)</h4>
+          <p>int, float, char, string, boolean...</p>
+        </div>
+
+        <!-- Toán tử -->
+        <div class="concept-card" onclick="document.getElementById('sec-operators').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">➕</div>
+          <h4>Toán tử (Operators)</h4>
+          <p>Các phép toán: +, -, *, /, %, ==, !=</p>
+        </div>
+
+        <!-- Câu điều kiện -->
+        <div class="concept-card" onclick="document.getElementById('sec-conditions').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">🔀</div>
+          <h4>Câu điều kiện (if/else)</h4>
+          <p>Rẽ nhánh luồng chương trình</p>
+        </div>
+
+        <!-- Vòng lặp -->
+        <div class="concept-card" onclick="document.getElementById('sec-loops').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">🔁</div>
+          <h4>Vòng lặp (Loops)</h4>
+          <p>Lặp lại công việc: for, while, do-while</p>
+        </div>
+
+        <!-- Hàm -->
+        <div class="concept-card" onclick="document.getElementById('sec-functions').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">⚡</div>
+          <h4>Hàm (Functions)</h4>
+          <p>Đóng gói và tái sử dụng code</p>
+        </div>
+
+        <!-- Mảng -->
+        <div class="concept-card" onclick="document.getElementById('sec-arrays').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">📊</div>
+          <h4>Mảng (Arrays)</h4>
+          <p>Lưu trữ nhiều giá trị cùng kiểu</p>
+        </div>
+
+        <!-- Con trỏ -->
+        <div class="concept-card" onclick="document.getElementById('sec-pointers').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">🎯</div>
+          <h4>Con trỏ (Pointers)</h4>
+          <p>Quản lý bộ nhớ trong C/C++</p>
+        </div>
+
+        <!-- OOP -->
+        <div class="concept-card" onclick="document.getElementById('sec-oop').scrollIntoView({behavior:'smooth'})">
+          <div class="concept-icon">🏗️</div>
+          <h4>OOP (Hướng đối tượng)</h4>
+          <p>Class, Object, Kế thừa, Đa hình</p>
+        </div>
+      </div>
+
+      <!-- ===== Chi tiết từng khái niệm (Collapsible) ===== -->
+
+      <!-- Biến (Variables) -->
+      <div class="collapsible open" id="sec-variables">
+        <div class="collapsible-header">
+          <span>📦 Biến (Variables)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Biến</strong> là vùng nhớ được đặt tên để lưu trữ dữ liệu. Mỗi biến có tên, kiểu dữ liệu và giá trị.</p>
+
+            <div class="info-box note">
+              <strong>📌 Quy tắc đặt tên biến:</strong> Bắt đầu bằng chữ cái hoặc dấu gạch dưới, không chứa khoảng trắng, phân biệt chữ hoa/thường.
+            </div>
+
+            <!-- Ví dụ: C -->
+            <h4>Trong ngôn ngữ C:</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> tuoi = <span class="number">20</span>;          <span class="comment">// Biến số nguyên</span>
+    <span class="type">float</span> diemTB = <span class="number">8.5</span>;    <span class="comment">// Biến số thực</span>
+    <span class="type">char</span> xepLoai = <span class="string">'A'</span>;    <span class="comment">// Biến ký tự</span>
+
+    <span class="function">printf</span>(<span class="string">"Tuoi: %d\n"</span>, tuoi);
+    <span class="function">printf</span>(<span class="string">"Diem TB: %.1f\n"</span>, diemTB);
+    <span class="function">printf</span>(<span class="string">"Xep loai: %c\n"</span>, xepLoai);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Tuoi: 20
+Diem TB: 8.5
+Xep loai: A</div>
+
+            <!-- Ví dụ: Python -->
+            <h4>Trong ngôn ngữ Python:</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre>tuoi = <span class="number">20</span>           <span class="comment"># Không cần khai báo kiểu</span>
+diem_tb = <span class="number">8.5</span>       <span class="comment"># Python tự nhận kiểu</span>
+xep_loai = <span class="string">"A"</span>      <span class="comment"># Chuỗi ký tự</span>
+
+<span class="builtin">print</span>(<span class="string">f"Tuoi: </span>{tuoi}<span class="string">"</span>)
+<span class="builtin">print</span>(<span class="string">f"Diem TB: </span>{diem_tb}<span class="string">"</span>)
+<span class="builtin">print</span>(<span class="string">f"Xep loai: </span>{xep_loai}<span class="string">"</span>)</pre>
+            </div>
+            <div class="output-block">Tuoi: 20
+Diem TB: 8.5
+Xep loai: A</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kiểu dữ liệu -->
+      <div class="collapsible" id="sec-datatypes">
+        <div class="collapsible-header">
+          <span>🏷️ Kiểu Dữ Liệu (Data Types)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Kiểu dữ liệu</strong> xác định loại giá trị mà biến có thể lưu trữ và các phép toán có thể thực hiện.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C / C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment">// Các kiểu dữ liệu cơ bản trong C/C++</span>
+<span class="type">int</span> soNguyen = <span class="number">42</span>;              <span class="comment">// Số nguyên (4 bytes)</span>
+<span class="type">float</span> soThuc = <span class="number">3.14</span>;           <span class="comment">// Số thực (4 bytes)</span>
+<span class="type">double</span> soThucLon = <span class="number">3.14159265</span>; <span class="comment">// Số thực chính xác (8 bytes)</span>
+<span class="type">char</span> kyTu = <span class="string">'A'</span>;               <span class="comment">// Ký tự (1 byte)</span>
+<span class="type">bool</span> dungSai = <span class="keyword">true</span>;          <span class="comment">// Boolean (C++ only)</span></pre>
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="comment"># Python tự nhận kiểu dữ liệu (Dynamic Typing)</span>
+so_nguyen = <span class="number">42</span>              <span class="comment"># int</span>
+so_thuc = <span class="number">3.14</span>             <span class="comment"># float</span>
+chuoi = <span class="string">"Hello World"</span>      <span class="comment"># str</span>
+dung_sai = <span class="keyword">True</span>            <span class="comment"># bool</span>
+danh_sach = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]      <span class="comment"># list</span>
+tu_dien = {<span class="string">"a"</span>: <span class="number">1</span>}        <span class="comment"># dict</span>
+
+<span class="builtin">print</span>(<span class="builtin">type</span>(so_nguyen))  <span class="comment"># &lt;class 'int'&gt;</span>
+<span class="builtin">print</span>(<span class="builtin">type</span>(chuoi))      <span class="comment"># &lt;class 'str'&gt;</span></pre>
+            </div>
+            <div class="output-block">&lt;class 'int'&gt;
+&lt;class 'str'&gt;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toán tử -->
+      <div class="collapsible" id="sec-operators">
+        <div class="collapsible-header">
+          <span>➕ Toán Tử (Operators)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Toán tử</strong> là các ký hiệu thực hiện phép toán trên dữ liệu.</p>
+
+            <div class="info-box tip">
+              <strong>💡 Các loại toán tử:</strong> Số học (+, -, *, /), So sánh (==, !=, <, >), Logic (&&, ||, !), Gán (=, +=, -=)
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">public class</span> <span class="class-name">Operators</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="type">int</span> a = <span class="number">10</span>, b = <span class="number">3</span>;
+
+        <span class="comment">// Toán tử số học</span>
+        System.out.<span class="function">println</span>(<span class="string">"a + b = "</span> + (a + b));  <span class="comment">// 13</span>
+        System.out.<span class="function">println</span>(<span class="string">"a - b = "</span> + (a - b));  <span class="comment">// 7</span>
+        System.out.<span class="function">println</span>(<span class="string">"a * b = "</span> + (a * b));  <span class="comment">// 30</span>
+        System.out.<span class="function">println</span>(<span class="string">"a / b = "</span> + (a / b));  <span class="comment">// 3</span>
+        System.out.<span class="function">println</span>(<span class="string">"a % b = "</span> + (a % b));  <span class="comment">// 1</span>
+
+        <span class="comment">// Toán tử so sánh</span>
+        System.out.<span class="function">println</span>(<span class="string">"a > b: "</span> + (a > b));    <span class="comment">// true</span>
+        System.out.<span class="function">println</span>(<span class="string">"a == b: "</span> + (a == b)); <span class="comment">// false</span>
+    }
+}</pre>
+            </div>
+            <div class="output-block">a + b = 13
+a - b = 7
+a * b = 30
+a / b = 3
+a % b = 1
+a > b: true
+a == b: false</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Câu điều kiện -->
+      <div class="collapsible" id="sec-conditions">
+        <div class="collapsible-header">
+          <span>🔀 Câu Điều Kiện (if / else)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Câu điều kiện</strong> cho phép chương trình đưa ra quyết định dựa trên điều kiện đúng/sai.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> diem = <span class="number">75</span>;
+
+    <span class="keyword">if</span> (diem >= <span class="number">90</span>) {
+        <span class="function">printf</span>(<span class="string">"Xuat sac!\n"</span>);
+    } <span class="keyword">else if</span> (diem >= <span class="number">70</span>) {
+        <span class="function">printf</span>(<span class="string">"Kha!\n"</span>);
+    } <span class="keyword">else if</span> (diem >= <span class="number">50</span>) {
+        <span class="function">printf</span>(<span class="string">"Trung binh!\n"</span>);
+    } <span class="keyword">else</span> {
+        <span class="function">printf</span>(<span class="string">"Can co gang hon!\n"</span>);
+    }
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Kha!</div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre>diem = <span class="number">75</span>
+
+<span class="keyword">if</span> diem >= <span class="number">90</span>:
+    <span class="builtin">print</span>(<span class="string">"Xuat sac!"</span>)
+<span class="keyword">elif</span> diem >= <span class="number">70</span>:
+    <span class="builtin">print</span>(<span class="string">"Kha!"</span>)
+<span class="keyword">elif</span> diem >= <span class="number">50</span>:
+    <span class="builtin">print</span>(<span class="string">"Trung binh!"</span>)
+<span class="keyword">else</span>:
+    <span class="builtin">print</span>(<span class="string">"Can co gang hon!"</span>)</pre>
+            </div>
+            <div class="output-block">Kha!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vòng lặp -->
+      <div class="collapsible" id="sec-loops">
+        <div class="collapsible-header">
+          <span>🔁 Vòng Lặp (Loops)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Vòng lặp</strong> cho phép thực hiện một khối lệnh lặp đi lặp lại nhiều lần.</p>
+
+            <h4>Vòng lặp for:</h4>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Java</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">public class</span> <span class="class-name">LoopDemo</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(<span class="type">String</span>[] args) {
+        <span class="comment">// Vòng lặp for</span>
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i <= <span class="number">5</span>; i++) {
+            System.out.<span class="function">println</span>(<span class="string">"Lan lap: "</span> + i);
+        }
+
+        <span class="comment">// Vòng lặp while</span>
+        <span class="type">int</span> count = <span class="number">0</span>;
+        <span class="keyword">while</span> (count < <span class="number">3</span>) {
+            System.out.<span class="function">println</span>(<span class="string">"Count: "</span> + count);
+            count++;
+        }
+    }
+}</pre>
+            </div>
+            <div class="output-block">Lan lap: 1
+Lan lap: 2
+Lan lap: 3
+Lan lap: 4
+Lan lap: 5
+Count: 0
+Count: 1
+Count: 2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hàm -->
+      <div class="collapsible" id="sec-functions">
+        <div class="collapsible-header">
+          <span>⚡ Hàm (Functions)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Hàm</strong> là khối code được đặt tên, có thể tái sử dụng. Hàm nhận đầu vào (tham số) và trả về kết quả.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Hàm tính tổng hai số</span>
+<span class="type">int</span> <span class="function">tinhTong</span>(<span class="type">int</span> a, <span class="type">int</span> b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Hàm tính giai thừa (đệ quy)</span>
+<span class="type">int</span> <span class="function">giaiThua</span>(<span class="type">int</span> n) {
+    <span class="keyword">if</span> (n <= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;
+    <span class="keyword">return</span> n * <span class="function">giaiThua</span>(n - <span class="number">1</span>);
+}
+
+<span class="type">int</span> <span class="function">main</span>() {
+    cout << <span class="string">"Tong: "</span> << <span class="function">tinhTong</span>(<span class="number">5</span>, <span class="number">3</span>) << endl;
+    cout << <span class="string">"5! = "</span> << <span class="function">giaiThua</span>(<span class="number">5</span>) << endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Tong: 8
+5! = 120</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mảng -->
+      <div class="collapsible" id="sec-arrays">
+        <div class="collapsible-header">
+          <span>📊 Mảng (Arrays)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Mảng</strong> là cấu trúc dữ liệu lưu trữ nhiều phần tử cùng kiểu trong bộ nhớ liên tiếp.</p>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> diem[<span class="number">5</span>] = {<span class="number">85</span>, <span class="number">92</span>, <span class="number">76</span>, <span class="number">88</span>, <span class="number">95</span>};
+    <span class="type">int</span> tong = <span class="number">0</span>;
+
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < <span class="number">5</span>; i++) {
+        <span class="function">printf</span>(<span class="string">"diem[%d] = %d\n"</span>, i, diem[i]);
+        tong += diem[i];
+    }
+    <span class="function">printf</span>(<span class="string">"Trung binh: %.1f\n"</span>, (<span class="type">float</span>)tong / <span class="number">5</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">diem[0] = 85
+diem[1] = 92
+diem[2] = 76
+diem[3] = 88
+diem[4] = 95
+Trung binh: 87.2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Con trỏ -->
+      <div class="collapsible" id="sec-pointers">
+        <div class="collapsible-header">
+          <span>🎯 Con Trỏ (Pointers) - C/C++</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>Con trỏ</strong> là biến lưu trữ địa chỉ bộ nhớ của biến khác. Đây là khái niệm đặc trưng của C/C++.</p>
+
+            <div class="info-box warning">
+              <strong>⚠️ Lưu ý:</strong> Con trỏ là khái niệm khó. Sử dụng sai có thể gây lỗi segmentation fault hoặc memory leak!
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> x = <span class="number">42</span>;
+    <span class="type">int</span> *ptr = &x;  <span class="comment">// ptr lưu địa chỉ của x</span>
+
+    <span class="function">printf</span>(<span class="string">"Gia tri x: %d\n"</span>, x);
+    <span class="function">printf</span>(<span class="string">"Dia chi x: %p\n"</span>, &x);
+    <span class="function">printf</span>(<span class="string">"Gia tri ptr: %p\n"</span>, ptr);
+    <span class="function">printf</span>(<span class="string">"Gia tri tai ptr: %d\n"</span>, *ptr);
+
+    *ptr = <span class="number">100</span>;  <span class="comment">// Thay đổi giá trị qua con trỏ</span>
+    <span class="function">printf</span>(<span class="string">"x sau khi thay doi: %d\n"</span>, x);
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Gia tri x: 42
+Dia chi x: 0x7ffd5e8c3abc
+Gia tri ptr: 0x7ffd5e8c3abc
+Gia tri tai ptr: 42
+x sau khi thay doi: 100</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OOP -->
+      <div class="collapsible" id="sec-oop">
+        <div class="collapsible-header">
+          <span>🏗️ Lập Trình Hướng Đối Tượng (OOP)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <p><strong>OOP</strong> là phương pháp lập trình dựa trên khái niệm "đối tượng" chứa dữ liệu và phương thức.</p>
+
+            <div class="info-box note">
+              <strong>4 trụ cột OOP:</strong> Đóng gói (Encapsulation), Kế thừa (Inheritance), Đa hình (Polymorphism), Trừu tượng (Abstraction).
+            </div>
+
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">Python</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="keyword">class</span> <span class="class-name">DongVat</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="builtin">self</span>, ten, tuoi):
+        <span class="builtin">self</span>.ten = ten
+        <span class="builtin">self</span>.tuoi = tuoi
+
+    <span class="keyword">def</span> <span class="function">gioi_thieu</span>(<span class="builtin">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"Toi la </span>{<span class="builtin">self</span>.ten}<span class="string">, </span>{<span class="builtin">self</span>.tuoi}<span class="string"> tuoi"</span>)
+
+<span class="keyword">class</span> <span class="class-name">Cho</span>(<span class="class-name">DongVat</span>):   <span class="comment"># Kế thừa từ DongVat</span>
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="builtin">self</span>, ten, tuoi, giong):
+        <span class="builtin">super</span>().__init__(ten, tuoi)
+        <span class="builtin">self</span>.giong = giong
+
+    <span class="keyword">def</span> <span class="function">sua</span>(<span class="builtin">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"</span>{<span class="builtin">self</span>.ten}<span class="string"> sua: Gau gau!"</span>)
+
+<span class="comment"># Tạo đối tượng</span>
+dog = <span class="class-name">Cho</span>(<span class="string">"Buddy"</span>, <span class="number">3</span>, <span class="string">"Golden"</span>)
+dog.gioi_thieu()
+dog.sua()</pre>
+            </div>
+            <div class="output-block">Toi la Buddy, 3 tuoi
+Buddy sua: Gau gau!</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SETUP GUIDES ========== -->
+    <section id="setup">
+      <div class="section-title">
+        <div class="section-icon">🔧</div>
+        <h2>Hướng Dẫn Cài Đặt Công Cụ</h2>
+      </div>
+
+      <!-- C/C++ Setup -->
+      <div class="setup-card">
+        <h3>🔵 Cài đặt cho C / C++</h3>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt GCC (MinGW)</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập trang <a href="https://www.mingw-w64.org/" target="_blank">MinGW-w64</a></li>
+                <li>Tải phiên bản phù hợp với hệ điều hành (Windows 64-bit)</li>
+                <li>Giải nén vào thư mục <code>C:\mingw64</code></li>
+                <li>Thêm <code>C:\mingw64\bin</code> vào biến môi trường PATH</li>
+                <li>Mở CMD, gõ <code>gcc --version</code> để kiểm tra</li>
+              </ol>
+              <a href="https://www.mingw-w64.org/downloads/" target="_blank" class="download-link">⬇️ Tải MinGW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt Code::Blocks</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="http://www.codeblocks.org/downloads" target="_blank">codeblocks.org</a></li>
+                <li>Tải bản <strong>codeblocks-xx.xx-mingw-setup.exe</strong> (có kèm compiler)</li>
+                <li>Chạy file cài đặt, chọn Full Installation</li>
+                <li>Mở Code::Blocks, tạo project C/C++ đầu tiên</li>
+              </ol>
+              <a href="http://www.codeblocks.org/downloads" target="_blank" class="download-link">⬇️ Tải Code::Blocks</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt Dev-C++</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank">SourceForge - Dev-C++</a></li>
+                <li>Tải phiên bản mới nhất</li>
+                <li>Cài đặt với các tùy chọn mặc định</li>
+                <li>Mở Dev-C++, vào File → New → Source File</li>
+              </ol>
+              <a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" class="download-link">⬇️ Tải Dev-C++</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Java Setup -->
+      <div class="setup-card">
+        <h3>🟠 Cài đặt cho Java</h3>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt JDK (Java Development Kit)</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank">Oracle JDK</a> hoặc <a href="https://adoptium.net/" target="_blank">Adoptium (OpenJDK)</a></li>
+                <li>Tải JDK cho hệ điều hành của bạn</li>
+                <li>Chạy cài đặt, ghi nhớ thư mục cài</li>
+                <li>Thêm <code>JAVA_HOME</code> và <code>bin</code> vào PATH</li>
+                <li>Mở CMD, gõ <code>java --version</code> và <code>javac --version</code></li>
+              </ol>
+              <a href="https://adoptium.net/" target="_blank" class="download-link">⬇️ Tải OpenJDK</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt IntelliJ IDEA</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="https://www.jetbrains.com/idea/download/" target="_blank">JetBrains IntelliJ IDEA</a></li>
+                <li>Tải bản Community (miễn phí) hoặc Ultimate</li>
+                <li>Cài đặt theo hướng dẫn</li>
+                <li>Mở IntelliJ, cấu hình JDK đã cài</li>
+                <li>Tạo project Java đầu tiên</li>
+              </ol>
+              <a href="https://www.jetbrains.com/idea/download/" target="_blank" class="download-link">⬇️ Tải IntelliJ IDEA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Python Setup -->
+      <div class="setup-card">
+        <h3>🟢 Cài đặt cho Python</h3>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt Python</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="https://www.python.org/downloads/" target="_blank">python.org</a></li>
+                <li>Tải phiên bản Python mới nhất</li>
+                <li><strong>Quan trọng:</strong> Tick ✅ "Add Python to PATH" khi cài đặt</li>
+                <li>Mở CMD, gõ <code>python --version</code> để kiểm tra</li>
+                <li>Gõ <code>pip --version</code> để kiểm tra pip</li>
+              </ol>
+              <a href="https://www.python.org/downloads/" target="_blank" class="download-link">⬇️ Tải Python</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapsible">
+          <div class="collapsible-header">
+            <span>Cài đặt VS Code</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="collapsible-content">
+              <ol class="setup-steps">
+                <li>Truy cập <a href="https://code.visualstudio.com/" target="_blank">code.visualstudio.com</a></li>
+                <li>Tải phiên bản cho hệ điều hành</li>
+                <li>Cài đặt VS Code</li>
+                <li>Mở VS Code, vào Extensions (Ctrl+Shift+X)</li>
+                <li>Cài extension <strong>"Python"</strong> của Microsoft</li>
+                <li>Cài extension <strong>"Code Runner"</strong> để chạy code nhanh</li>
+              </ol>
+              <a href="https://code.visualstudio.com/" target="_blank" class="download-link">⬇️ Tải VS Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INTERACTIVE LEARNING ========== -->
+    <section id="interactive">
+      <div class="section-title">
+        <div class="section-icon">🎮</div>
+        <h2>Học Tương Tác - Code Editor</h2>
+      </div>
+
+      <p>Chọn ngôn ngữ, viết code hoặc tải ví dụ mẫu, sau đó nhấn "Chạy Code" để xem kết quả mô phỏng.</p>
+
+      <div class="code-editor" id="main-editor">
+        <!-- Tabs chọn ngôn ngữ -->
+        <div class="editor-tabs">
+          <button class="editor-tab active" onclick="switchTab(this, 'python'); loadExample('main-editor', 'python', 'hello')">🐍 Python</button>
+          <button class="editor-tab" onclick="switchTab(this, 'c'); loadExample('main-editor', 'c', 'hello')">C</button>
+          <button class="editor-tab" onclick="switchTab(this, 'cpp'); loadExample('main-editor', 'cpp', 'hello')">C++</button>
+          <button class="editor-tab" onclick="switchTab(this, 'java'); loadExample('main-editor', 'java', 'hello')">☕ Java</button>
+        </div>
+
+        <!-- Vùng soạn code -->
+        <div class="editor-area">
+          <textarea spellcheck="false" placeholder="// Viết code hoặc chọn ví dụ mẫu...">print("Hello, Python!")</textarea>
+        </div>
+
+        <!-- Nút chức năng -->
+        <div class="editor-actions">
+          <button class="btn btn-success" onclick="runCode('main-editor')">▶ Chạy Code</button>
+          <button class="btn btn-secondary" onclick="clearEditor('main-editor')">🗑️ Xóa</button>
+
+          <!-- Dropdown chọn ví dụ -->
+          <select class="btn btn-secondary" onchange="if(this.value){const [l,e]=this.value.split(':');loadExample('main-editor',l,e)}" style="padding: 0.5rem 0.75rem;">
+            <option value="">📂 Chọn ví dụ...</option>
+            <optgroup label="Python">
+              <option value="python:hello">Hello World</option>
+              <option value="python:list">List & Comprehension</option>
+              <option value="python:oop">OOP - Class</option>
+            </optgroup>
+            <optgroup label="C">
+              <option value="c:hello">Hello World</option>
+              <option value="c:variables">Variables</option>
+              <option value="c:loop">Vòng lặp</option>
+            </optgroup>
+            <optgroup label="C++">
+              <option value="cpp:hello">Hello World</option>
+              <option value="cpp:class">Class & OOP</option>
+            </optgroup>
+            <optgroup label="Java">
+              <option value="java:hello">Hello World</option>
+              <option value="java:oop">OOP - Inheritance</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Output -->
+        <div class="editor-output">// Nhấn "▶ Chạy Code" để xem kết quả</div>
+      </div>
+    </section>
+
+    <!-- ========== QUIZ SECTION ========== -->
+    <section id="quiz-section">
+      <div class="section-title">
+        <div class="section-icon">❓</div>
+        <h2>Quiz Kiểm Tra Kiến Thức</h2>
+      </div>
+
+      <div class="quiz-container" id="home-quiz">
+        <!-- Câu 1 -->
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">1</span>
+            Trong C, kiểu dữ liệu nào dùng để lưu số nguyên?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A">
+              <span class="option-letter">A</span> float
+            </li>
+            <li class="quiz-option" data-answer="B">
+              <span class="option-letter">B</span> int
+            </li>
+            <li class="quiz-option" data-answer="C">
+              <span class="option-letter">C</span> char
+            </li>
+            <li class="quiz-option" data-answer="D">
+              <span class="option-letter">D</span> string
+            </li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Câu 2 -->
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">2</span>
+            Lệnh nào dùng để in ra màn hình trong Python?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A">
+              <span class="option-letter">A</span> echo()
+            </li>
+            <li class="quiz-option" data-answer="B">
+              <span class="option-letter">B</span> console.log()
+            </li>
+            <li class="quiz-option" data-answer="C">
+              <span class="option-letter">C</span> print()
+            </li>
+            <li class="quiz-option" data-answer="D">
+              <span class="option-letter">D</span> printf()
+            </li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Câu 3 -->
+        <div class="quiz-question-block" data-correct="A">
+          <div class="quiz-question">
+            <span class="q-number">3</span>
+            4 trụ cột của OOP là gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A">
+              <span class="option-letter">A</span> Encapsulation, Inheritance, Polymorphism, Abstraction
+            </li>
+            <li class="quiz-option" data-answer="B">
+              <span class="option-letter">B</span> Variables, Functions, Loops, Conditions
+            </li>
+            <li class="quiz-option" data-answer="C">
+              <span class="option-letter">C</span> Input, Output, Process, Storage
+            </li>
+            <li class="quiz-option" data-answer="D">
+              <span class="option-letter">D</span> Array, Pointer, Struct, Union
+            </li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Câu 4 -->
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">4</span>
+            Vòng lặp nào kiểm tra điều kiện trước khi thực hiện?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A">
+              <span class="option-letter">A</span> do...while
+            </li>
+            <li class="quiz-option" data-answer="B">
+              <span class="option-letter">B</span> while
+            </li>
+            <li class="quiz-option" data-answer="C">
+              <span class="option-letter">C</span> foreach
+            </li>
+            <li class="quiz-option" data-answer="D">
+              <span class="option-letter">D</span> repeat
+            </li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <!-- Câu 5 -->
+        <div class="quiz-question-block" data-correct="D">
+          <div class="quiz-question">
+            <span class="q-number">5</span>
+            Ngôn ngữ nào không cần khai báo kiểu dữ liệu cho biến?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A">
+              <span class="option-letter">A</span> C
+            </li>
+            <li class="quiz-option" data-answer="B">
+              <span class="option-letter">B</span> C++
+            </li>
+            <li class="quiz-option" data-answer="C">
+              <span class="option-letter">C</span> Java
+            </li>
+            <li class="quiz-option" data-answer="D">
+              <span class="option-letter">D</span> Python
+            </li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+          <button class="btn btn-primary" onclick="checkQuiz('home-quiz')">✅ Kiểm tra đáp án</button>
+          <button class="btn btn-secondary" onclick="resetQuiz('home-quiz')">🔄 Làm lại</button>
+        </div>
+
+        <div class="quiz-score"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER - Chân trang
+       ============================================================ -->
+  <footer class="footer">
+    <p>© 2026 <strong>Programming Learning Hub</strong> — Nền tảng học lập trình trực quan cho sinh viên</p>
+    <p>Được xây dựng với ❤️ bằng HTML5, CSS3 và JavaScript</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

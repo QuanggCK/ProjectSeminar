@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Học ngôn ngữ C++ - OOP, Classes, Templates, STL với ví dụ và bài tập">
+  <title>Ngôn Ngữ C++ - Programming Learning Hub</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Mở menu">☰</button>
+    <a href="../index.html" class="navbar-brand">
+      <div class="logo-icon">⟨/⟩</div>
+      <span>Programming Learning Hub</span>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../index.html">Trang Chủ</a></li>
+      <li><a href="c.html">C</a></li>
+      <li><a href="cpp.html" class="active">C++</a></li>
+      <li><a href="java.html">Java</a></li>
+      <li><a href="python.html">Python</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Dark/Light Mode">🌙</button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ C++</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro"><span class="nav-icon cpp-icon">📖</span> Giới thiệu</a></li>
+        <li><a href="#syntax"><span class="nav-icon cpp-icon">📝</span> Cú pháp cơ bản</a></li>
+        <li><a href="#oop"><span class="nav-icon cpp-icon">🏗️</span> OOP</a></li>
+        <li><a href="#templates"><span class="nav-icon cpp-icon">📐</span> Templates</a></li>
+        <li><a href="#stl"><span class="nav-icon cpp-icon">📚</span> STL</a></li>
+        <li><a href="#exercises"><span class="nav-icon cpp-icon">✏️</span> Bài tập</a></li>
+        <li><a href="#cpp-quiz"><span class="nav-icon cpp-icon">❓</span> Quiz</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Ngôn Ngữ Khác</div>
+      <ul class="sidebar-nav">
+        <li><a href="c.html"><span class="nav-icon c-icon">C</span> C</a></li>
+        <li><a href="java.html"><span class="nav-icon java-icon">☕</span> Java</a></li>
+        <li><a href="python.html"><span class="nav-icon python-icon">🐍</span> Python</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="../index.html">🏠 Trang Chủ</a> <span>/</span> <span>Ngôn ngữ C++</span>
+      </div>
+      <h1>
+        <span class="lang-badge cpp-badge">C++</span>
+        Ngôn Ngữ Lập Trình C++
+      </h1>
+      <p>Mở rộng của C với OOP, templates và STL - được phát triển bởi Bjarne Stroustrup từ năm 1979.</p>
+    </div>
+
+    <!-- Giới thiệu -->
+    <section class="content-section" id="intro">
+      <h2>Giới Thiệu C++</h2>
+      <p>C++ là ngôn ngữ lập trình đa mô hình (multi-paradigm), hỗ trợ lập trình thủ tục, hướng đối tượng và generic. C++ được sử dụng rộng rãi trong game, hệ điều hành, và ứng dụng hiệu suất cao.</p>
+
+      <div class="info-box note">
+        <strong>📌 C++ so với C:</strong>
+        <ul>
+          <li>C++ hỗ trợ OOP (Class, Object, Kế thừa...)</li>
+          <li>C++ có Templates cho lập trình generic</li>
+          <li>C++ có STL (Standard Template Library)</li>
+          <li>C++ dùng <code>cout/cin</code> thay cho <code>printf/scanf</code></li>
+        </ul>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C++ - Hello World</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>    <span class="comment">// Thư viện nhập/xuất</span>
+<span class="keyword">using namespace</span> std;    <span class="comment">// Sử dụng namespace chuẩn</span>
+
+<span class="type">int</span> <span class="function">main</span>() {
+    cout << <span class="string">"Hello, C++!"</span> << endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">Hello, C++!</div>
+    </section>
+
+    <!-- Cú pháp cơ bản -->
+    <section class="content-section" id="syntax">
+      <h2>Cú Pháp Cơ Bản C++</h2>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Nhập / Xuất với cin / cout</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">string</span> ten;
+    <span class="type">int</span> tuoi;
+
+    cout << <span class="string">"Nhap ten: "</span>;
+    getline(cin, ten);        <span class="comment">// Đọc cả dòng (có khoảng trắng)</span>
+
+    cout << <span class="string">"Nhap tuoi: "</span>;
+    cin >> tuoi;              <span class="comment">// Đọc số nguyên</span>
+
+    cout << <span class="string">"Xin chao "</span> << ten
+         << <span class="string">", ban "</span> << tuoi << <span class="string">" tuoi!"</span> << endl;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Nhap ten: Nguyen Van A
+Nhap tuoi: 20
+Xin chao Nguyen Van A, ban 20 tuoi!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Tham chiếu (References) & Tham trị</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Truyền tham trị - không thay đổi biến gốc</span>
+<span class="type">void</span> <span class="function">tangGiaTri</span>(<span class="type">int</span> x) {
+    x += <span class="number">10</span>;
+}
+
+<span class="comment">// Truyền tham chiếu - thay đổi biến gốc</span>
+<span class="type">void</span> <span class="function">tangGiaTriRef</span>(<span class="type">int</span> &x) {
+    x += <span class="number">10</span>;
+}
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> a = <span class="number">5</span>;
+
+    <span class="function">tangGiaTri</span>(a);
+    cout << <span class="string">"Sau tham tri: "</span> << a << endl;   <span class="comment">// 5 (không đổi)</span>
+
+    <span class="function">tangGiaTriRef</span>(a);
+    cout << <span class="string">"Sau tham chieu: "</span> << a << endl; <span class="comment">// 15 (đã đổi)</span>
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Sau tham tri: 5
+Sau tham chieu: 15</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OOP -->
+    <section class="content-section" id="oop">
+      <h2>Lập Trình Hướng Đối Tượng (OOP)</h2>
+      <p>OOP là paradigm lập trình chính của C++. Mọi thứ được tổ chức thành Class (lớp) và Object (đối tượng).</p>
+
+      <div class="collapsible open">
+        <div class="collapsible-header">
+          <span>Class & Object cơ bản</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">class</span> <span class="class-name">SinhVien</span> {
+<span class="keyword">private</span>:                        <span class="comment">// Đóng gói (Encapsulation)</span>
+    <span class="type">string</span> maSV;
+    <span class="type">float</span> diemTB;
+
+<span class="keyword">public</span>:
+    <span class="type">string</span> ten;
+
+    <span class="comment">// Constructor</span>
+    <span class="function">SinhVien</span>(<span class="type">string</span> t, <span class="type">string</span> ma, <span class="type">float</span> diem) {
+        ten = t;
+        maSV = ma;
+        diemTB = diem;
+    }
+
+    <span class="comment">// Phương thức</span>
+    <span class="type">void</span> <span class="function">hienThi</span>() {
+        cout << <span class="string">"Ten: "</span> << ten << endl;
+        cout << <span class="string">"Ma SV: "</span> << maSV << endl;
+        cout << <span class="string">"Diem TB: "</span> << diemTB << endl;
+    }
+
+    <span class="comment">// Getter</span>
+    <span class="type">float</span> <span class="function">getDiemTB</span>() { <span class="keyword">return</span> diemTB; }
+};
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="class-name">SinhVien</span> sv1(<span class="string">"Nguyen Van A"</span>, <span class="string">"SV001"</span>, <span class="number">8.5</span>);
+    sv1.<span class="function">hienThi</span>();
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">Ten: Nguyen Van A
+Ma SV: SV001
+Diem TB: 8.5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapsible">
+        <div class="collapsible-header">
+          <span>Kế thừa (Inheritance) & Đa hình (Polymorphism)</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">C++</span>
+                <button class="copy-btn">📋 Copy</button>
+              </div>
+              <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Lớp cha</span>
+<span class="keyword">class</span> <span class="class-name">HinhHoc</span> {
+<span class="keyword">public</span>:
+    <span class="keyword">virtual</span> <span class="type">float</span> <span class="function">dienTich</span>() = <span class="number">0</span>;  <span class="comment">// Hàm thuần ảo (abstract)</span>
+    <span class="keyword">virtual</span> <span class="type">void</span> <span class="function">hienThi</span>() {
+        cout << <span class="string">"Dien tich: "</span> << <span class="function">dienTich</span>() << endl;
+    }
+};
+
+<span class="comment">// Lớp con: Hình tròn</span>
+<span class="keyword">class</span> <span class="class-name">HinhTron</span> : <span class="keyword">public</span> <span class="class-name">HinhHoc</span> {
+    <span class="type">float</span> banKinh;
+<span class="keyword">public</span>:
+    <span class="function">HinhTron</span>(<span class="type">float</span> r) : banKinh(r) {}
+    <span class="type">float</span> <span class="function">dienTich</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> <span class="number">3.14159</span> * banKinh * banKinh;
+    }
+};
+
+<span class="comment">// Lớp con: Hình chữ nhật</span>
+<span class="keyword">class</span> <span class="class-name">HinhChuNhat</span> : <span class="keyword">public</span> <span class="class-name">HinhHoc</span> {
+    <span class="type">float</span> dai, rong;
+<span class="keyword">public</span>:
+    <span class="function">HinhChuNhat</span>(<span class="type">float</span> d, <span class="type">float</span> r) : dai(d), rong(r) {}
+    <span class="type">float</span> <span class="function">dienTich</span>() <span class="keyword">override</span> {
+        <span class="keyword">return</span> dai * rong;
+    }
+};
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="class-name">HinhTron</span> ht(<span class="number">5</span>);
+    <span class="class-name">HinhChuNhat</span> hcn(<span class="number">4</span>, <span class="number">6</span>);
+
+    cout << <span class="string">"=== Hinh tron ==="</span> << endl;
+    ht.<span class="function">hienThi</span>();
+
+    cout << <span class="string">"=== Hinh chu nhat ==="</span> << endl;
+    hcn.<span class="function">hienThi</span>();
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+            </div>
+            <div class="output-block">=== Hinh tron ===
+Dien tich: 78.5398
+=== Hinh chu nhat ===
+Dien tich: 24</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Templates -->
+    <section class="content-section" id="templates">
+      <h2>Templates (Khuôn mẫu)</h2>
+      <p>Templates cho phép viết code tổng quát, hoạt động với nhiều kiểu dữ liệu khác nhau.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C++</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Function template - Hàm tìm max</span>
+<span class="keyword">template</span> <<span class="keyword">typename</span> <span class="type">T</span>>
+<span class="type">T</span> <span class="function">timMax</span>(<span class="type">T</span> a, <span class="type">T</span> b) {
+    <span class="keyword">return</span> (a > b) ? a : b;
+}
+
+<span class="comment">// Class template - Cặp giá trị</span>
+<span class="keyword">template</span> <<span class="keyword">typename</span> <span class="type">T1</span>, <span class="keyword">typename</span> <span class="type">T2</span>>
+<span class="keyword">class</span> <span class="class-name">Cap</span> {
+<span class="keyword">public</span>:
+    <span class="type">T1</span> first;
+    <span class="type">T2</span> second;
+    <span class="function">Cap</span>(<span class="type">T1</span> a, <span class="type">T2</span> b) : first(a), second(b) {}
+    <span class="type">void</span> <span class="function">hienThi</span>() {
+        cout << <span class="string">"("</span> << first << <span class="string">", "</span> << second << <span class="string">")"</span> << endl;
+    }
+};
+
+<span class="type">int</span> <span class="function">main</span>() {
+    cout << <span class="string">"Max(3, 7): "</span> << <span class="function">timMax</span>(<span class="number">3</span>, <span class="number">7</span>) << endl;
+    cout << <span class="string">"Max(3.14, 2.71): "</span> << <span class="function">timMax</span>(<span class="number">3.14</span>, <span class="number">2.71</span>) << endl;
+
+    <span class="class-name">Cap</span><<span class="type">string</span>, <span class="type">int</span>> sv(<span class="string">"Nguyen Van A"</span>, <span class="number">20</span>);
+    sv.<span class="function">hienThi</span>();
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">Max(3, 7): 7
+Max(3.14, 2.71): 3.14
+(Nguyen Van A, 20)</div>
+    </section>
+
+    <!-- STL -->
+    <section class="content-section" id="stl">
+      <h2>STL (Standard Template Library)</h2>
+      <p>STL cung cấp các cấu trúc dữ liệu và thuật toán sẵn có: vector, map, set, sort, find...</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">C++</span>
+          <button class="copy-btn">📋 Copy</button>
+        </div>
+        <pre><span class="preprocessor">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;vector&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;algorithm&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;map&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="comment">// === Vector ===</span>
+    vector<<span class="type">int</span>> ds = {<span class="number">5</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">9</span>};
+
+    <span class="function">sort</span>(ds.<span class="function">begin</span>(), ds.<span class="function">end</span>());  <span class="comment">// Sắp xếp</span>
+
+    cout << <span class="string">"Vector sau sap xep: "</span>;
+    <span class="keyword">for</span> (<span class="type">int</span> x : ds) cout << x << <span class="string">" "</span>;
+    cout << endl;
+
+    <span class="comment">// === Map ===</span>
+    map<<span class="type">string</span>, <span class="type">int</span>> diemSV;
+    diemSV[<span class="string">"An"</span>] = <span class="number">85</span>;
+    diemSV[<span class="string">"Binh"</span>] = <span class="number">92</span>;
+    diemSV[<span class="string">"Cuong"</span>] = <span class="number">78</span>;
+
+    cout << <span class="string">"\nDiem sinh vien:"</span> << endl;
+    <span class="keyword">for</span> (<span class="keyword">auto</span> &[ten, diem] : diemSV) {
+        cout << ten << <span class="string">": "</span> << diem << endl;
+    }
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</pre>
+      </div>
+      <div class="output-block">Vector sau sap xep: 1 2 5 8 9
+
+Diem sinh vien:
+An: 85
+Binh: 92
+Cuong: 78</div>
+    </section>
+
+    <!-- Bài tập -->
+    <section class="content-section" id="exercises">
+      <h2>Bài Tập Luyện Tập</h2>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 1: Class Phân Số</h4>
+        <p>Tạo class PhanSo với các phương thức: cộng, trừ, nhân, chia và rút gọn phân số.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 2: Quản lý sinh viên</h4>
+        <p>Xây dựng hệ thống quản lý sinh viên dùng vector. Cho phép thêm, xóa, tìm kiếm và sắp xếp.</p>
+      </div>
+
+      <div class="exercise-box">
+        <h4>✏️ Bài 3: Stack bằng Template</h4>
+        <p>Viết class template Stack với các phương thức push, pop, top, isEmpty.</p>
+      </div>
+
+      <h3 class="mt-3">💻 Thử viết code:</h3>
+      <div class="code-editor" id="cpp-editor">
+        <div class="editor-tabs">
+          <button class="editor-tab active">C++</button>
+        </div>
+        <div class="editor-area">
+          <textarea spellcheck="false">#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, C++!" << endl;
+    return 0;
+}</textarea>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-success" onclick="runCode('cpp-editor')">▶ Chạy Code</button>
+          <button class="btn btn-secondary" onclick="clearEditor('cpp-editor')">🗑️ Xóa</button>
+          <button class="btn btn-secondary" onclick="loadExample('cpp-editor','cpp','hello')">📂 Hello World</button>
+          <button class="btn btn-secondary" onclick="loadExample('cpp-editor','cpp','class')">📂 Class</button>
+        </div>
+        <div class="editor-output">// Nhấn "▶ Chạy Code" để xem kết quả</div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="content-section" id="cpp-quiz">
+      <h2>Quiz - Kiểm Tra Kiến Thức C++</h2>
+
+      <div class="quiz-container" id="quiz-cpp">
+        <div class="quiz-question-block" data-correct="C">
+          <div class="quiz-question">
+            <span class="q-number">1</span>
+            Từ khóa nào dùng để khai báo lớp trong C++?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> struct</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> object</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> class</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> type</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="B">
+          <div class="quiz-question">
+            <span class="q-number">2</span>
+            Từ khóa "virtual" dùng để làm gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Khai báo biến</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Tạo hàm ảo cho đa hình</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Tạo template</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Import thư viện</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="A">
+          <div class="quiz-question">
+            <span class="q-number">3</span>
+            STL container nào cho phép truy cập phần tử bằng key?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> map</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> vector</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> array</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> stack</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div class="quiz-question-block" data-correct="D">
+          <div class="quiz-question">
+            <span class="q-number">4</span>
+            Toán tử "::" trong C++ gọi là gì?
+          </div>
+          <ul class="quiz-options">
+            <li class="quiz-option" data-answer="A"><span class="option-letter">A</span> Toán tử gán</li>
+            <li class="quiz-option" data-answer="B"><span class="option-letter">B</span> Toán tử so sánh</li>
+            <li class="quiz-option" data-answer="C"><span class="option-letter">C</span> Toán tử tham chiếu</li>
+            <li class="quiz-option" data-answer="D"><span class="option-letter">D</span> Toán tử phạm vi (Scope Resolution)</li>
+          </ul>
+          <div class="quiz-result"></div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="checkQuiz('quiz-cpp')">✅ Kiểm tra</button>
+          <button class="btn btn-secondary" onclick="resetQuiz('quiz-cpp')">🔄 Làm lại</button>
+        </div>
+        <div class="quiz-score"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <strong>Programming Learning Hub</strong> — Học lập trình C++</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
