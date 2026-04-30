@@ -599,10 +599,19 @@ function initSmoothScroll() {
       const targetId = anchor.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
-        targetEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        // Kiểm tra xem đây có phải là section được phân trang không
+        if (targetEl.classList.contains('content-section') && typeof window.goToPage === 'function') {
+          const sections = Array.from(document.querySelectorAll('.content-section'));
+          const targetIndex = sections.indexOf(targetEl);
+          if (targetIndex !== -1) {
+            window.goToPage(targetIndex);
+          }
+        } else {
+          targetEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
         // Đóng sidebar trên mobile
         closeSidebar();
       }
@@ -611,7 +620,104 @@ function initSmoothScroll() {
 }
 
 // ============================================================
-// 12. INITIALIZATION - Khởi tạo khi trang load
+// 12. PAGINATION - Phân trang bài học
+// ============================================================
+
+/**
+ * Hiển thị từng section dưới dạng một trang riêng biệt
+ */
+function initPagination() {
+  const sections = Array.from(document.querySelectorAll('.content-section'));
+  if (sections.length === 0) return;
+
+  let currentIndex = 0;
+
+  // Ẩn tất cả ngoại trừ trang đầu tiên
+  sections.forEach((sec, index) => {
+    if (index !== 0) {
+      sec.style.display = 'none';
+    } else {
+      sec.classList.add('active-page');
+    }
+  });
+
+  // Tạo giao diện nút chuyển trang
+  const paginationContainer = document.createElement('div');
+  paginationContainer.className = 'pagination-controls';
+  paginationContainer.style.display = 'flex';
+  paginationContainer.style.justifyContent = 'space-between';
+  paginationContainer.style.alignItems = 'center';
+  paginationContainer.style.marginTop = '2rem';
+  paginationContainer.style.paddingTop = '1.5rem';
+  paginationContainer.style.borderTop = '1px solid var(--border)';
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'btn btn-secondary';
+  prevBtn.innerHTML = '⬅️ Bài trước';
+  prevBtn.disabled = true;
+
+  const indicator = document.createElement('span');
+  indicator.className = 'page-indicator';
+  indicator.style.fontWeight = '600';
+  indicator.style.color = 'var(--text-secondary)';
+  indicator.textContent = `Phần 1 / ${sections.length}`;
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'btn btn-primary';
+  nextBtn.innerHTML = 'Bài tiếp ➡️';
+  if (sections.length <= 1) nextBtn.disabled = true;
+
+  paginationContainer.appendChild(prevBtn);
+  paginationContainer.appendChild(indicator);
+  paginationContainer.appendChild(nextBtn);
+
+  const mainContent = document.querySelector('.main-content');
+  if (mainContent) {
+    mainContent.appendChild(paginationContainer);
+  }
+
+  // Hàm chuyển trang
+  window.goToPage = function(index) {
+    if (index < 0 || index >= sections.length) return;
+    
+    sections[currentIndex].style.display = 'none';
+    sections[currentIndex].classList.remove('active-page');
+    
+    currentIndex = index;
+    
+    sections[currentIndex].style.display = '';
+    sections[currentIndex].classList.add('active-page');
+    
+    // Thêm animation
+    sections[currentIndex].classList.remove('animate-fadeInUp');
+    void sections[currentIndex].offsetWidth; // trigger reflow
+    sections[currentIndex].classList.add('animate-fadeInUp');
+
+    // Cập nhật trạng thái nút
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === sections.length - 1;
+    indicator.textContent = `Phần ${currentIndex + 1} / ${sections.length}`;
+
+    // Cuộn lên đầu content
+    const pageHeader = document.querySelector('.page-header');
+    if (pageHeader) {
+      pageHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  prevBtn.addEventListener('click', () => {
+    window.goToPage(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    window.goToPage(currentIndex + 1);
+  });
+}
+
+// ============================================================
+// 13. INITIALIZATION - Khởi tạo khi trang load
 // ============================================================
 
 /**
@@ -624,6 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuiz();          // Khởi tạo quiz
   initScrollAnimations(); // Khởi tạo scroll animations
   setActiveNav();      // Đánh dấu trang active
+  initPagination();    // Khởi tạo phân trang bài học
   initSmoothScroll();  // Smooth scroll
 
   // Event: Nút theme toggle
