@@ -129,7 +129,8 @@ function QuizSection({ quiz, accentColor }) {
 }
 
 export default function CourseView() {
-  const { lang } = useParams();
+  const params = useParams();
+  const lang = params.lang || params.id;
   const course = courses[lang];
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);

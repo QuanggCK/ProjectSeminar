@@ -31,7 +31,7 @@ export default function Dashboard({ user, onLogout }) {
                             to={`/course/${course.id}`}
                             className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-100"
                         >
-                            <div className={`h-24 ${course.color} flex items-center justify-center`}>
+                            <div className="h-24 flex items-center justify-center" style={{ background: course.color }}>
                                 <span className="text-white text-4xl font-bold">{course.icon}</span>
                             </div>
                             <div className="p-6">
