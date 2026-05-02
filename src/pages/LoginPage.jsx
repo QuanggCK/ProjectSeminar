@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, GraduationCap, ArrowRight } from 'lucide-react';
+import { GraduationCap, ArrowRight } from 'lucide-react';
 import useStore from '../store/useStore';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import { APP_NAME } from '../utils/constants';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const { login, authLoading, authError, clearAuthError } = useStore();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!name.trim()) return;
     clearAuthError();
-    const success = await login(email, password);
+    const success = await login(name.trim());
     if (success) navigate('/dashboard');
   };
 
@@ -43,23 +43,13 @@ export default function LoginPage() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <Input
-              label="Email"
-              id="login-email"
-              type="email"
-              placeholder="email@example.com"
-              icon={Mail}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              label="Mật khẩu"
-              id="login-password"
-              type="password"
-              placeholder="Nhập mật khẩu"
-              icon={Lock}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              label="Tên của bạn"
+              id="login-name"
+              type="text"
+              placeholder="Nhập tên để bắt đầu học..."
+              icon={GraduationCap}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               required
             />
             <Button
@@ -68,25 +58,13 @@ export default function LoginPage() {
               className="w-full"
               icon={ArrowRight}
             >
-              Đăng nhập
+              Bắt đầu học ngay
             </Button>
           </form>
 
-          {/* Register link */}
-          <p className="mt-6 text-center text-sm text-secondary">
-            Chưa có tài khoản?{' '}
-            <Link to="/register" className="font-semibold text-tertiary hover:underline">
-              Đăng ký ngay
-            </Link>
+          <p className="text-center mt-6 text-sm text-secondary">
+            Chúc Bạn Học Tốt {'<3'}
           </p>
-
-          {/* Demo hint */}
-          <div className="mt-8 p-4 bg-surface rounded-md-aqua border border-secondary/10">
-            <p className="text-xs text-secondary text-center font-mono uppercase tracking-wider mb-2">Demo nhanh</p>
-            <p className="text-sm text-secondary text-center">
-              Đăng ký tài khoản mới rồi đăng nhập. Dữ liệu lưu trên trình duyệt.
-            </p>
-          </div>
         </div>
       </div>
 

@@ -34,10 +34,9 @@ function CodeBlock({ code, lang }) {
   );
 }
 
-function QuizSection({ quiz, accentColor, courseId, topicId, onSaveScore }) {
+function QuizSection({ quiz, courseId, topicId, onSaveScore }) {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
-  useEffect(() => { setAnswers({}); setShowResults(false); }, [quiz]);
   const select = (qi, oi) => { if (!showResults) setAnswers(p => ({ ...p, [qi]: oi })); };
   const score = quiz.filter((q, i) => answers[i] === q.correct).length;
   const allAnswered = Object.keys(answers).length === quiz.length;
@@ -146,7 +145,7 @@ export default function CourseDetailPage() {
     if (course && wizardSteps[currentStepIndex]?.type !== 'quiz') {
       completeStep(course.id, wizardSteps[currentStepIndex]?.stepKey);
     }
-  }, [currentStepIndex]);
+  }, [currentStepIndex, course, completeStep, wizardSteps]);
 
   if (!course) return (
     <div className="min-h-[70vh] flex items-center justify-center">
@@ -225,7 +224,7 @@ export default function CourseDetailPage() {
           <div className="min-h-[40vh] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             {step.type === 'theory' && <div className="text-secondary leading-relaxed">{renderContent(step.lesson, theme)}</div>}
             {step.type === 'code' && <CodeBlock code={step.lesson.code} lang={step.lesson.lang} />}
-            {step.type === 'quiz' && <QuizSection quiz={step.quiz} accentColor={theme.accent} courseId={lang} topicId={step.topic.id} onSaveScore={saveQuizScore} />}
+            {step.type === 'quiz' && <QuizSection key={`quiz-${currentStepIndex}`} quiz={step.quiz} courseId={lang} topicId={step.topic.id} onSaveScore={saveQuizScore} />}
           </div>
 
           {step.type !== 'quiz' && <NoteInput courseId={lang} lessonTitle={step.title} onAdd={addNote} />}

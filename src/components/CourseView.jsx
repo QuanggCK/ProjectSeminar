@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { courses } from '../data/courses';
 import { BookOpen, Code2, HelpCircle, ChevronLeft, ChevronRight, Menu, X, Copy, Check, RotateCcw } from 'lucide-react';
@@ -52,11 +52,6 @@ function QuizSection({ quiz, accentColor }) {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
 
-  useEffect(() => {
-    setAnswers({});
-    setShowResults(false);
-  }, [quiz]);
-
   const select = (qi, oi) => { if (!showResults) setAnswers(p => ({ ...p, [qi]: oi })); };
   const score = quiz.filter((q, i) => answers[i] === q.correct).length;
   const allAnswered = Object.keys(answers).length === quiz.length;
@@ -89,16 +84,17 @@ function QuizSection({ quiz, accentColor }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {q.options.map((opt, oi) => {
                 let bg = '#0f172a', border = '1px solid #334155', color = '#cbd5e1';
+                let opacity = 1;
                 if (showResults) {
                   if (oi === q.correct) { bg = 'rgba(34,197,94,0.1)'; border = '1px solid #22c55e'; color = '#22c55e'; }
                   else if (answers[qi] === oi) { bg = 'rgba(239,68,68,0.1)'; border = '1px solid #ef4444'; color = '#ef4444'; }
-                  else { opacity: 0.5; }
+                  else { opacity = 0.5; }
                 } else if (answers[qi] === oi) {
                   bg = `${accentColor}20`; border = `1px solid ${accentColor}`; color = accentColor;
                 }
                 return (
                   <button key={oi} onClick={() => select(qi, oi)} disabled={showResults} 
-                    style={{ background: bg, border, color, padding: '12px 16px', borderRadius: 8, textAlign: 'left', display: 'flex', alignItems: 'center', cursor: showResults ? 'default' : 'pointer', transition: 'all 0.2s', fontSize: 14, fontWeight: 500 }}>
+                    style={{ opacity, background: bg, border, color, padding: '12px 16px', borderRadius: 8, textAlign: 'left', display: 'flex', alignItems: 'center', cursor: showResults ? 'default' : 'pointer', transition: 'all 0.2s', fontSize: 14, fontWeight: 500 }}>
                     <span style={{
                       minWidth: 22, height: 22, borderRadius: '50%',
                       background: showResults && oi === q.correct ? '#22c55e' : (showResults && answers[qi] === oi ? '#ef4444' : '#1e293b'), border: '1px solid #334155', color: showResults && (oi === q.correct || answers[qi] === oi) ? '#fff' : '#94a3b8',
@@ -196,7 +192,7 @@ export default function CourseView() {
     }
   };
 
-  const SidebarContent = () => (
+  const renderSidebarContent = () => (
     <>
       <div style={{ background: colors.bg, padding: '18px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -270,11 +266,11 @@ export default function CourseView() {
 
       <div style={{ display: 'flex', flex: 1 }}>
         <aside style={{ width: 280, minWidth: 280, background: '#070d17', borderRight: '1px solid #1e293b', height: 'calc(100vh - 56px)', position: 'sticky', top: 56, overflowY: 'auto' }} className="desktop-sidebar">
-          <SidebarContent />
+          {renderSidebarContent()}
         </aside>
 
         <aside className={`sidebar-mobile${sidebarOpen ? ' open' : ''}`} style={{ background: '#070d17', overflowY: 'auto', position: 'fixed', top: 56, bottom: 0, left: sidebarOpen ? 0 : -280, width: 280, zIndex: 145, transition: 'left 0.3s' }}>
-          <SidebarContent />
+          {renderSidebarContent()}
         </aside>
 
         <main className="content-area" style={{ flex: 1, overflowY: 'auto', padding: '32px 40px', maxWidth: 900, margin: '0 auto' }}>
@@ -313,7 +309,7 @@ export default function CourseView() {
             )}
 
             {currentStep.type === 'quiz' && (
-              <QuizSection quiz={currentStep.quiz} accentColor={colors.accent} />
+              <QuizSection key={`quiz-${currentStepIndex}`} quiz={currentStep.quiz} accentColor={colors.accent} />
             )}
           </div>
 

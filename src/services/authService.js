@@ -56,6 +56,43 @@ export async function registerUser({ name, email, password }) {
 }
 
 /**
+ * Login user by name
+ */
+export async function loginByName(name) {
+  await new Promise((r) => setTimeout(r, 400));
+  const users = getUsersDB();
+  let user = users.find((u) => u.name === name);
+
+  if (!user) {
+    user = {
+      id: generateId(),
+      name,
+      avatar: null,
+      createdAt: new Date().toISOString(),
+      streak: 0,
+      lastLoginDate: new Date().toISOString(),
+    };
+    users.push(user);
+  } else {
+    // Update streak
+    const today = new Date().toDateString();
+    const lastLogin = new Date(user.lastLoginDate).toDateString();
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+
+    if (lastLogin === yesterday) {
+      user.streak = (user.streak || 0) + 1;
+    } else if (lastLogin !== today) {
+      user.streak = 1;
+    }
+    user.lastLoginDate = new Date().toISOString();
+  }
+  
+  saveUsersDB(users);
+  const { password: _, ...safeUser } = user;
+  return { user: safeUser, token: `mock_token_${user.id}` };
+}
+
+/**
  * Login user
  */
 export async function loginUser({ email, password }) {

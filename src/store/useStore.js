@@ -13,10 +13,10 @@ const useStore = create((set, get) => ({
   authLoading: false,
   authError: null,
 
-  login: async (email, password) => {
+  login: async (name) => {
     set({ authLoading: true, authError: null });
     try {
-      const { user, token } = await authService.loginUser({ email, password });
+      const { user, token } = await authService.loginByName(name);
       localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
       localStorage.setItem(STORAGE_KEYS.TOKEN, token);
       courseService.logActivity('login', `Đã đăng nhập`);
