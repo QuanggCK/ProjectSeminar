@@ -5,7 +5,7 @@ import useStore from '../../store/useStore';
 import { APP_NAME } from '../../utils/constants';
 
 export default function Navbar() {
-  const { user, logout, toggleSidebar, searchQuery, setSearchQuery, theme, toggleTheme } = useStore();
+  const { user, logout, searchQuery, setSearchQuery, theme, toggleTheme } = useStore();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -26,13 +26,6 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Left: Logo + Mobile Menu */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleSidebar}
-              className="lg:hidden p-2 text-secondary hover:text-primary transition-colors rounded-sm-aqua hover:bg-primary/5"
-              aria-label="Menu"
-            >
-              <Menu size={20} />
-            </button>
             <Link to="/dashboard" className="flex items-center gap-2.5 group">
               <div className="w-8 h-8 bg-tertiary rounded-sm-aqua flex items-center justify-center">
                 <GraduationCap size={18} className="text-on-primary" />

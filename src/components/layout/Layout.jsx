@@ -1,17 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
-import MobileSidebar from './Sidebar';
+import BottomNav from './BottomNav';
 
 export default function Layout() {
   return (
     <div className="min-h-screen bg-neutral flex flex-col">
       <Navbar />
-      <MobileSidebar />
-      <main className="flex-1">
+      <main className="flex-1 pb-16 lg:pb-0">
         <Outlet />
       </main>
-      <footer className="border-t border-secondary/10 bg-surface">
+      <BottomNav />
+      <footer className="border-t border-secondary/10 bg-surface hidden lg:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-sm text-secondary">

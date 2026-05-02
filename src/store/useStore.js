@@ -104,10 +104,6 @@ const useStore = create((set, get) => ({
   setSearchQuery: (query) => set({ searchQuery: query }),
 
   // ============ UI STATE ============
-  sidebarOpen: false,
-  setSidebarOpen: (open) => set({ sidebarOpen: open }),
-  toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
-  
   theme: localStorage.getItem('codelearning_theme') || 'light',
   toggleTheme: () => set((s) => {
     const newTheme = s.theme === 'light' ? 'dark' : 'light';
