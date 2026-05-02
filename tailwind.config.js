@@ -18,10 +18,10 @@ export default {
                 'accent-border': 'rgba(45, 212, 191, 0.25)',
             },
             fontFamily: {
-                display: ['"DM Sans"', 'system-ui', 'sans-serif'],
-                body: ['"DM Sans"', 'system-ui', 'sans-serif'],
-                mono: ['"DM Mono"', '"JetBrains Mono"', 'monospace'],
-                code: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
+                display: ['var(--font-display)', '"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
+                body: ['var(--font-body)', '"Inter"', 'system-ui', 'sans-serif'],
+                mono: ['var(--font-mono)', '"JetBrains Mono"', 'monospace'],
+                code: ['var(--font-code)', '"JetBrains Mono"', 'monospace'],
             },
             fontSize: {
                 'display': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '700' }],

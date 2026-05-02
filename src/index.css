@@ -15,9 +15,9 @@
   --color-on-primary: #0F2E2C;
 
   /* Typography */
-  --font-display: 'DM Sans', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'DM Mono', 'JetBrains Mono', monospace;
+  --font-display: 'Be Vietnam Pro', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --font-code: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Spacing */
